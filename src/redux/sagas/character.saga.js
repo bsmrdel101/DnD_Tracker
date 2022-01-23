@@ -8,10 +8,10 @@ function* fetchCharacter(action) {
         method: 'GET',
         url: '/api/stats'
     });
-
+    
     yield put({
         type: 'SET_CHARACTER',
-        data: response.data
+        payload: response.data
     });
   } catch (error) {
     console.log('Error:', error);

@@ -1,11 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import CharacterSelection from '../CharacterSelection/CharacterSelection';
 
 function Dashboard() {
   const dispatch = useDispatch();
 
-  const character = useSelector((store) => store.character);
+  const characters = useSelector((store) => store.character);
 
   useEffect(() => {
     dispatch({
@@ -16,6 +17,9 @@ function Dashboard() {
   return (
     <center>
       <h1>Your Characters</h1>
+      {characters.map((character, i) => {
+        return <CharacterSelection key={i} character={character} />;
+      })}
     </center>
   );
 }

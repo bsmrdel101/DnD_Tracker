@@ -17,7 +17,7 @@ CREATE TABLE "character_stats" (
     "race" VARCHAR (80) UNIQUE NOT NULL,
     "background" VARCHAR (80) UNIQUE NOT NULL,
     "level" INTEGER NOT NULL,
-    "AC" INTEGER NOT NULL,
+    "ac" INTEGER NOT NULL,
     "health" INTEGER NOT NULL,
     "temp_health" INTEGER DEFAULT 0,
     "prof_bonus" INTEGER NOT NULL,
