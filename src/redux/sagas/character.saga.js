@@ -19,8 +19,39 @@ function* fetchCharacter(action) {
   }
 }
 
+function* setSelectedCharacter(action) {
+  try {
+    yield axios ({
+        method: 'PUT',
+        url: '/api/selection',
+        data: {id: action.payload}
+    });
+
+  } catch (error) {
+    console.log('Error:', error);
+  }
+}
+
+function* getSelectedCharacter(action) {
+  try {
+    const response = yield axios ({
+        method: 'GET',
+        url: '/api/selection',
+    });
+    
+    yield put({
+      type: 'SET_SELECTION',
+      payload: response.data.selected_character
+    });
+  } catch (error) {
+    console.log('Error:', error);
+  }
+}
+
 function* characterSaga() {
   yield takeLatest('FETCH_CHARACTER', fetchCharacter);
+  yield takeLatest('SET_SELECTED_CHARACTER', setSelectedCharacter);
+  yield takeLatest('GET_SELECTED_CHARACTER', getSelectedCharacter);
 }
 
 export default characterSaga;

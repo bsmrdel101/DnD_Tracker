@@ -13,10 +13,10 @@ import Nav from '../Nav/Nav';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import Dashboard from '../Dashboard/Dashboard';
-import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import Character from '../Character/Character';
 
 import './App.css';
 
@@ -50,11 +50,10 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
             exact
-            path="/info"
+            path="/character"
           >
-            <InfoPage />
+            <Character />
           </ProtectedRoute>
 
           <Route
