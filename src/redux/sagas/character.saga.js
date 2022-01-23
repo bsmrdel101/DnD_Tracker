@@ -8,6 +8,7 @@ function* fetchCharacter(action) {
         method: 'GET',
         url: '/api/stats'
     });
+    console.log(response.data);
     
     yield put({
         type: 'SET_CHARACTER',

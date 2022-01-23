@@ -13,7 +13,6 @@ function Dashboard() {
       type: 'FETCH_CHARACTER'
     });
   }, [])
-
   return (
     <center>
       <h1>Your Characters</h1>
