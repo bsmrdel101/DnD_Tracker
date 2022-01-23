@@ -14,6 +14,9 @@ function CharacterSelection({character}) {
                         <Typography gutterBottom variant="h5" component="div">
                             {character.name}
                         </Typography>
+                        <Typography variant="p" component="div">
+                            {character.race} {character.class} {character.level}
+                        </Typography>
                     </CardContent>
                 </CardActionArea>
             </Card>
