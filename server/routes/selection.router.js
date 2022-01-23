@@ -28,8 +28,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/', (req, res) => {
-    console.log(req.body.id);
-    
     const sqlText = 
     `
         UPDATE "user"
