@@ -27,6 +27,24 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     })  
 });
 
+router.get('/:id', rejectUnauthenticated, (req, res) => {
+    const sqlText = 
+    `
+        SELECT * FROM "character_stats"
+        WHERE "id" = $1;
+    `;
+    const sqlValues = [
+        req.params.id
+    ];
+    
+    pool.query(sqlText, sqlValues)
+        .then((dbres) => res.send(dbres.rows))
+        .catch((dberror) => {
+        console.log('Oops you messed up DB error', dberror);
+        res.sendStatus(500)
+    })  
+});
+
 router.post('/', (req, res) => {
 
 });

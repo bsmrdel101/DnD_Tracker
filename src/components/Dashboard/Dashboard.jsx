@@ -22,7 +22,7 @@ function Dashboard() {
   const handleSelection = (character) => {
     dispatch({
       type: 'SELECTED_CHARACTER',
-      payload: character
+      payload: character.id
     });
     history.push('/character');
   }

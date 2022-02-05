@@ -23,7 +23,7 @@ function* selectCharacter(action) {
   try {
     const response = yield axios ({
         method: 'GET',
-        url: '/api/stats'
+        url: `/api/stats/${action.payload}`
     });
     
     yield put({

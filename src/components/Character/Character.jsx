@@ -1,16 +1,20 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 
 function Character() {
     const dispatch = useDispatch();
 
-    const character = useSelector((store) => store.selectedCharacterReducer);
+    const selectedCharacter = useSelector((store) => store.selectedCharacterReducer);
 
     return (
-        <>  
-            <p>{character.name}</p>
-            <p>{character.class}</p>
+        <>  {selectedCharacter.map((character) => {
+                return (
+                    <div key={character.id}>
+                        <p>{character.name}</p>
+                        <p>{character.class}</p>
+                    </div>
+                );
+            })}
         </>
     );
 }
