@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { Avatar } from '@mui/material';
 import { useEffect } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { TextField } from '@mui/material';
+import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
 import { Box } from '@mui/system';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 
@@ -55,10 +55,10 @@ function Character() {
                                     <span className='bold-text'>AC:</span> {character.ac}
                                 </Typography>
                                 <Typography variant="p" component="div">
-                                    <span className='bold-text'>Proficiency Bonus:</span> {character.prof_bonus}
+                                    <span className='bold-text'>Proficiency Bonus:</span> +{character.prof_bonus}
                                 </Typography>
                                 <Typography variant="p" component="div">
-                                    <span className='bold-text'>Initiative:</span> {character.initiative}
+                                    <span className='bold-text'>Initiative:</span> {character.initiative >= 0 && '+'}{character.initiative}
                                 </Typography>
                                 <Typography variant="p" component="div">
                                     <span className='bold-text'>Movement:</span> {character.movement}
@@ -71,10 +71,18 @@ function Character() {
                                 <Typography gutterBottom variant="h5" component="div" sx={{ fontSize: 30 }}>
                                     <FavoriteIcon id='heart-icon' /> {healthReducer}     
                                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                        <LocalHospitalIcon sx={{ color: '#b0bec5', mr: 1, my: 0.5 }} />
-                                        <TextField 
-                                            label="Deal Damage" 
-                                            variant="outlined"
+                                        <button id='add-hp-btn'><LocalHospitalIcon id='add-hp-icon' sx={{ color: '#119711', mr: 1, my: 0.5 }} /></button>
+                                        <input 
+                                            id='add-hp'
+                                            placeholder="Heal" 
+                                            type="number"
+                                        />
+                                    </Box>  
+                                    <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                                        <button id='dmg-hp-btn'><IndeterminateCheckBoxIcon id='dmg-hp-icon' sx={{ color: 'red', mr: 1, my: 0.5 }} /></button>
+                                        <input 
+                                            id='dmg-hp'
+                                            placeholder="Damage" 
                                             type="number"
                                         />
                                     </Box>  
