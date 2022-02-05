@@ -4,6 +4,7 @@ const healthReducer = (state = {maxHealth: 0, health: 0, temp_health: 0}, action
       case 'SET_HEALTH':
         copyOfState = {...state};
         copyOfState.health = action.payload;
+        copyOfState.maxHealth = action.payload;
         return copyOfState;
       case 'HEAL':
         copyOfState = {...state};
@@ -13,18 +14,23 @@ const healthReducer = (state = {maxHealth: 0, health: 0, temp_health: 0}, action
         }
         return copyOfState;
       case 'DAMAGE':
+        let carryDamage = 0; 
         copyOfState = {...state};
-        if (copyOfState.temp > 0) {
-          copyOfState.temp -= action.payload;
-          if (copyOfState.temp < 0) {
-            copyOfState.temp = 0;
+        if (copyOfState.temp_health > 0) {
+          // Add carry over damage if there is more damage than temp_health health
+          if (action.payload > copyOfState.temp_health) {
+            carryDamage = action.payload - copyOfState.temp_health;
+          }
+          // Damage temp_health health
+          copyOfState.temp_health -= action.payload;
+          if (copyOfState.temp_health < 0) {
+            copyOfState.temp_health = 0;
           }
         } else {
+          // Damage health
           copyOfState.health -= action.payload;
-          if (copyOfState.health < 0) {
-            copyOfState.health = 0;
-          }
         }
+        copyOfState.health -= carryDamage;
         return copyOfState;
       case 'ADD_TEMP':
         copyOfState = {...state};
