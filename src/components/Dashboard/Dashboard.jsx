@@ -30,9 +30,9 @@ function Dashboard() {
   return (
     <center>
       <h1>Your Characters</h1>
-      {characters.map((character, i) => {
+      {characters.map((character) => {
         return (
-          <div className="character-selection-container" key={i}>
+          <div className="character-selection-container" key={character.id}>
             <Card sx={{ maxWidth: 345, backgroundColor: '#e7e7e7' }} onClick={() => handleSelection(character)}>
                 <CardActionArea>
                     <CardContent>
