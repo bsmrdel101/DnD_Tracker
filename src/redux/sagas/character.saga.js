@@ -56,26 +56,31 @@ function* postCharacter(action) {
   }
 }
 
-// function* selectCharacter(action) {
-//   try {
-//     const response = yield axios ({
-//         method: 'GET',
-//         url: `/api/stats/${action.payload}`
-//     });
+function* getHealth(action) {
+  try {
+    const responseId = yield axios ({
+        method: 'GET',
+        url: '/api/stats/selectedCharacterId'
+    });
+    const response = yield axios ({
+      method: 'GET',
+      url: `/api/stats/health/${responseId.data.selected_character}`
+    });
     
-//     yield put({
-//         type: 'SET_SELECTED_CHARACTER',
-//         payload: response.data
-//     });
-//   } catch (error) {
-//     console.log('Error:', error);
-//   }
-// }
+    yield put({
+        type: 'SET_HEALTH',
+        payload: response.data.health
+    });
+  } catch (error) {
+    console.log('Error:', error);
+  }
+}
 
 function* characterSaga() {
   yield takeLatest('FETCH_CHARACTER', fetchCharacter);
   yield takeLatest('GET_SELECTED_CHARACTER', selectCharacter);
   yield takeLatest('POST_SELECTED_CHARACTER', postCharacter);
+  yield takeLatest('GET_HEALTH', getHealth);
 }
 
 export default characterSaga;
