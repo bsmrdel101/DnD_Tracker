@@ -3,6 +3,13 @@
     font-size: 25px;
 }
 
+#blue-heart-icon {
+    color: #4343bf;
+    font-size: 25px;
+    padding-left: 15px;
+}
+
+/* Heal */
 #add-hp-btn {
     border: 0;
     background-color: #e7e7e7;
@@ -18,6 +25,8 @@
     padding-bottom: 15px;
 }
 
+
+/* Damage */
 #dmg-hp-btn {
     border: 0;
     background-color: #e7e7e7;
@@ -30,5 +39,22 @@
 }
 
 #dmg-hp {
+    padding-bottom: 15px;
+}
+
+
+/* Temp health */
+#temp-hp-btn {
+    border: 0;
+    background-color: #e7e7e7;
+    padding: 8px 0 0 0;
+}
+
+#temp-hp-icon:hover {
+    cursor: pointer;
+    transform: scale(1.1, 1.1);
+}
+
+#temp-hp {
     padding-bottom: 15px;
 }

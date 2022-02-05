@@ -9,6 +9,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
 import { Box } from '@mui/system';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import ShieldIcon from '@mui/icons-material/Shield';
 
 import './Character.css'
 
@@ -20,6 +21,7 @@ function Character() {
 
     const [damage, setDamage] = useState('');
     const [heal, setHeal] = useState('');
+    const [tempHealth, setTempHealth] = useState('');
 
     useEffect(() => {
         dispatch({
@@ -72,7 +74,9 @@ function Character() {
                         <Card sx={{ maxWidth: 345, backgroundColor: '#e7e7e7', marginTop: 2 }}>
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div" sx={{ fontSize: 30 }}>
-                                    <FavoriteIcon id='heart-icon' /> {healthReducer.health}     
+                                    <FavoriteIcon id='heart-icon' /> {healthReducer.health} 
+                                    <FavoriteIcon id='blue-heart-icon' /> {healthReducer.temp_health}    
+                                    {/* Heal */}
                                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                                         <button 
                                             id='add-hp-btn'
@@ -90,6 +94,7 @@ function Character() {
                                             onChange={(event) => setHeal(event.target.value)}
                                         />
                                     </Box>  
+                                    {/* Damage */}
                                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                                         <button 
                                             id='dmg-hp-btn' 
@@ -105,6 +110,24 @@ function Character() {
                                             type="number"
                                             value={damage}
                                             onChange={(event) => setDamage(event.target.value)}
+                                        />
+                                    </Box>  
+                                    {/* Add temp health */}
+                                    <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                                        <button 
+                                            id='temp-hp-btn' 
+                                            onClick={() => dispatch({type:'ADD_TEMP', payload: tempHealth})}>
+                                                <ShieldIcon 
+                                                    id='temp-hp-icon' 
+                                                    sx={{ color: '#4343bf', mr: 1, my: 0.5 }} 
+                                                />
+                                        </button>
+                                        <input 
+                                            id='temp-hp'
+                                            placeholder="Temporary Health" 
+                                            type="number"
+                                            value={tempHealth}
+                                            onChange={(event) => setTempHealth(event.target.value)}
                                         />
                                     </Box>  
                                 </Typography>
