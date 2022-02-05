@@ -91,7 +91,7 @@ function Character() {
                                         </button>
                                         <input 
                                             id='add-hp'
-                                            placeholder="Heal" 
+                                            placeholder="Heal"
                                             type="number"
                                             value={heal}
                                             onChange={(event) => setHeal(event.target.value)}
