@@ -23,7 +23,7 @@ function Character() {
             {selectedCharacter.map((character) => {
                 return (
                     <div key={character.id}>
-                        <Card sx={{ maxWidth: 345, backgroundColor: '#e7e7e7' }} onClick={() => handleSelection(character)}>
+                        <Card sx={{ maxWidth: 345, backgroundColor: '#e7e7e7' }}>
                             <CardActionArea>
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="div">

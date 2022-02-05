@@ -63,8 +63,24 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     })  
 });
 
-router.post('/', (req, res) => {
-
+router.put('/', (req, res) => {
+    const sqlText = 
+    `
+        UPDATE "user"
+        SET "selected_character" = $1
+        WHERE "id" = $2;
+    `;
+    const sqlValues = [
+        req.body.id,
+        req.user.id
+    ];
+    
+    pool.query(sqlText, sqlValues)
+        .then((dbres) => res.sendStatus(201))
+        .catch((dberror) => {
+        console.log('Oops you messed up DB error', dberror);
+        res.sendStatus(500)
+    })  
 });
 
 module.exports = router;

@@ -42,7 +42,11 @@ function* selectCharacter(action) {
 // Adds the selected character's id to the database
 function* postCharacter(action) {
   try {
-
+    yield axios ({
+      method: 'PUT',
+      url: '/api/stats',
+      data: {id: action.payload}
+    });
     
     yield put({
         type: 'GET_SELECTED_CHARACTER'
