@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 function Character() {
     const dispatch = useDispatch();
 
-    const character = useSelector((store) => store.character);
+    const character = useSelector((store) => store.selectedCharacterReducer);
 
     return (
         <>  

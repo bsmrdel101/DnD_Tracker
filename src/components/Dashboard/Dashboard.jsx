@@ -21,7 +21,7 @@ function Dashboard() {
 
   const handleSelection = (character) => {
     dispatch({
-      type: 'SET_CHARACTER',
+      type: 'SELECTED_CHARACTER',
       payload: character
     });
     history.push('/character');
