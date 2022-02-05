@@ -80,7 +80,10 @@ function Character() {
                                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                                         <button 
                                             id='add-hp-btn'
-                                            onClick={() => dispatch({type:'HEAL', payload: heal})}>
+                                            onClick={() => {
+                                                dispatch({type:'HEAL', payload: heal});
+                                                setHeal('');
+                                            }}>
                                                 <LocalHospitalIcon 
                                                     id='add-hp-icon'
                                                     sx={{ color: '#119711', mr: 1, my: 0.5 }} 
@@ -98,7 +101,10 @@ function Character() {
                                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                                         <button 
                                             id='dmg-hp-btn' 
-                                            onClick={() => dispatch({type:'DAMAGE', payload: damage})}>
+                                            onClick={() => {
+                                                dispatch({type:'DAMAGE', payload: damage});
+                                                setDamage('');
+                                            }}>
                                                 <IndeterminateCheckBoxIcon 
                                                     id='dmg-hp-icon' 
                                                     sx={{ color: 'red', mr: 1, my: 0.5 }} 
@@ -116,7 +122,10 @@ function Character() {
                                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                                         <button 
                                             id='temp-hp-btn' 
-                                            onClick={() => dispatch({type:'ADD_TEMP', payload: tempHealth})}>
+                                            onClick={() => {
+                                                dispatch({type:'ADD_TEMP', payload: tempHealth});
+                                                setTempHealth('');
+                                            }}>
                                                 <ShieldIcon 
                                                     id='temp-hp-icon' 
                                                     sx={{ color: '#4343bf', mr: 1, my: 0.5 }} 
