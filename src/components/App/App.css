@@ -3,6 +3,18 @@ body,
 #react-root {
   background-color: #360000;
   height: 100vh;
+  width: 100vw;
+}
+
+/* Other browsers */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 body {
@@ -29,6 +41,8 @@ Container
 
 .container {
   padding: 0 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* --------------------------------------------------------------------------------

@@ -12,7 +12,7 @@
 /* Heal */
 #add-hp-btn {
     border: 0;
-    background-color: #e7e7e7;
+    background-color: #f3c6c6;
     padding: 0;
 }
 
@@ -29,7 +29,7 @@
 /* Damage */
 #dmg-hp-btn {
     border: 0;
-    background-color: #e7e7e7;
+    background-color: #f3c6c6;
     padding: 8px 0 0 0;
 }
 
@@ -46,7 +46,7 @@
 /* Temp health */
 #temp-hp-btn {
     border: 0;
-    background-color: #e7e7e7;
+    background-color: #f3c6c6;
     padding: 8px 0 0 0;
 }
 
