@@ -21,9 +21,13 @@ function* fetchCharacter(action) {
 // Retrieves the selected character
 function* selectCharacter(action) {
   try {
-    const response = yield axios ({
+    const responseId = yield axios ({
         method: 'GET',
-        url: `/api/stats/${action.payload}`
+        url: '/api/stats/selectedCharacterId'
+    });
+    const response = yield axios ({
+      method: 'GET',
+      url: `/api/stats/${responseId.data.selected_character}`
     });
     
     yield put({
@@ -35,9 +39,39 @@ function* selectCharacter(action) {
   }
 }
 
+// Adds the selected character's id to the database
+function* postCharacter(action) {
+  try {
+
+    
+    yield put({
+        type: 'GET_SELECTED_CHARACTER'
+    });
+  } catch (error) {
+    console.log('Error:', error);
+  }
+}
+
+// function* selectCharacter(action) {
+//   try {
+//     const response = yield axios ({
+//         method: 'GET',
+//         url: `/api/stats/${action.payload}`
+//     });
+    
+//     yield put({
+//         type: 'SET_SELECTED_CHARACTER',
+//         payload: response.data
+//     });
+//   } catch (error) {
+//     console.log('Error:', error);
+//   }
+// }
+
 function* characterSaga() {
   yield takeLatest('FETCH_CHARACTER', fetchCharacter);
-  yield takeLatest('SELECTED_CHARACTER', selectCharacter);
+  yield takeLatest('GET_SELECTED_CHARACTER', selectCharacter);
+  yield takeLatest('POST_SELECTED_CHARACTER', postCharacter);
 }
 
 export default characterSaga;

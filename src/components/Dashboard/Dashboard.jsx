@@ -21,10 +21,10 @@ function Dashboard() {
 
   const handleSelection = (character) => {
     dispatch({
-      type: 'SELECTED_CHARACTER',
+      type: 'POST_SELECTED_CHARACTER',
       payload: character.id
     });
-    history.push('/character');
+    setTimeout(() => {history.push('/character')}, 100);
   }
 
   return (

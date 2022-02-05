@@ -27,6 +27,24 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     })  
 });
 
+router.get('/selectedCharacterId', rejectUnauthenticated, (req, res) => {
+    const sqlText = 
+    `
+        SELECT "selected_character" FROM "user"
+        WHERE "id" = $1;
+    `;
+    const sqlValues = [
+        req.user.id
+    ];
+    
+    pool.query(sqlText, sqlValues)
+        .then((dbres) => res.send(dbres.rows[0]))
+        .catch((dberror) => {
+        console.log('Oops you messed up DB error', dberror);
+        res.sendStatus(500)
+    })  
+});
+
 router.get('/:id', rejectUnauthenticated, (req, res) => {
     const sqlText = 
     `
@@ -38,7 +56,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     ];
     
     pool.query(sqlText, sqlValues)
-        .then((dbres) => res.send(dbres.rows))
+        .then((dbres) => res.send(dbres.rows[0]))
         .catch((dberror) => {
         console.log('Oops you messed up DB error', dberror);
         res.sendStatus(500)
