@@ -76,6 +76,7 @@ function* getHealth(action) {
   }
 }
 
+
 function* characterSaga() {
   yield takeLatest('FETCH_CHARACTER', fetchCharacter);
   yield takeLatest('GET_SELECTED_CHARACTER', selectCharacter);

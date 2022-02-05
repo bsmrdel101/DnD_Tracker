@@ -4,7 +4,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Avatar } from '@mui/material';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
 import { Box } from '@mui/system';
@@ -17,6 +17,9 @@ function Character() {
 
     const selectedCharacter = useSelector((store) => store.selectedCharacterReducer);
     const healthReducer = useSelector((store) => store.healthReducer);
+
+    const [damage, setDamage] = useState('');
+    const [heal, setHeal] = useState('');
 
     useEffect(() => {
         dispatch({
@@ -69,21 +72,39 @@ function Character() {
                         <Card sx={{ maxWidth: 345, backgroundColor: '#e7e7e7', marginTop: 2 }}>
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div" sx={{ fontSize: 30 }}>
-                                    <FavoriteIcon id='heart-icon' /> {healthReducer}     
+                                    <FavoriteIcon id='heart-icon' /> {healthReducer.health}     
                                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                        <button id='add-hp-btn'><LocalHospitalIcon id='add-hp-icon' sx={{ color: '#119711', mr: 1, my: 0.5 }} /></button>
+                                        <button 
+                                            id='add-hp-btn'
+                                            onClick={() => dispatch({type:'HEAL', payload: heal})}>
+                                                <LocalHospitalIcon 
+                                                    id='add-hp-icon'
+                                                    sx={{ color: '#119711', mr: 1, my: 0.5 }} 
+                                                />
+                                        </button>
                                         <input 
                                             id='add-hp'
                                             placeholder="Heal" 
                                             type="number"
+                                            value={heal}
+                                            onChange={(event) => setHeal(event.target.value)}
                                         />
                                     </Box>  
                                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                        <button id='dmg-hp-btn'><IndeterminateCheckBoxIcon id='dmg-hp-icon' sx={{ color: 'red', mr: 1, my: 0.5 }} /></button>
+                                        <button 
+                                            id='dmg-hp-btn' 
+                                            onClick={() => dispatch({type:'DAMAGE', payload: damage})}>
+                                                <IndeterminateCheckBoxIcon 
+                                                    id='dmg-hp-icon' 
+                                                    sx={{ color: 'red', mr: 1, my: 0.5 }} 
+                                                />
+                                        </button>
                                         <input 
                                             id='dmg-hp'
                                             placeholder="Damage" 
                                             type="number"
+                                            value={damage}
+                                            onChange={(event) => setDamage(event.target.value)}
                                         />
                                     </Box>  
                                 </Typography>
