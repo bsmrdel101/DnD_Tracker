@@ -152,7 +152,7 @@ function Character() {
                                         <Typography gutterBottom variant="h5" component="div" textAlign="center">
                                             Ability Scores
                                         </Typography>
-                                        <div className='ability-score-container'>
+                                        <section className='ability-score-container'>
                                             <div className='ability-scores-col-1'>
                                                 {/* Str */}
                                                 <div className='ability-score-box'>
@@ -160,7 +160,7 @@ function Character() {
                                                         Str
                                                     </Typography>
                                                     <Typography gutterBottom variant="h6" component="div">
-                                                        10
+                                                        {character.str}
                                                     </Typography>
                                                 </div>
                                                 {/* Dex */}
@@ -169,7 +169,7 @@ function Character() {
                                                         Dex
                                                     </Typography>
                                                     <Typography gutterBottom variant="h6" component="div">
-                                                        10
+                                                        {character.dex}
                                                     </Typography>
                                                 </div>
                                                 {/* Con */}
@@ -178,7 +178,7 @@ function Character() {
                                                         Con
                                                     </Typography>
                                                     <Typography gutterBottom variant="h6" component="div">
-                                                        10
+                                                        {character.con}
                                                     </Typography>
                                                 </div>
                                             </div>
@@ -189,7 +189,7 @@ function Character() {
                                                         Int
                                                     </Typography>
                                                     <Typography gutterBottom variant="h6" component="div">
-                                                        10
+                                                        {character.int}
                                                     </Typography>
                                                 </div>
                                                 {/* Wis */}
@@ -198,7 +198,7 @@ function Character() {
                                                         Wis
                                                     </Typography>
                                                     <Typography gutterBottom variant="h6" component="div">
-                                                        10
+                                                        {character.wis}
                                                     </Typography>
                                                 </div>      
                                                 {/* Char */}
@@ -207,11 +207,11 @@ function Character() {
                                                         Char
                                                     </Typography>
                                                     <Typography gutterBottom variant="h6" component="div">
-                                                        10
+                                                        {character.char}
                                                     </Typography>
                                                 </div>                                    
                                             </div>                                            
-                                        </div>
+                                        </section>
                                     </CardContent>
                                 </Card>
                             </Grid>
