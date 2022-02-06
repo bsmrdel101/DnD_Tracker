@@ -31,6 +31,9 @@ function Character() {
         dispatch({
             type: 'GET_HEALTH'
         });
+        dispatch({
+            type: 'FETCH_SKILLS'
+        });
     }, [])
     
     return (
@@ -233,11 +236,8 @@ function Character() {
                                                                 Acrobatics <span className='skill-type'>(dex)</span>
                                                             </Typography>
                                                         </td>
-                                                        <td>
-                                                            <Typography gutterBottom variant="p" component="div">
-                                                                
-                                                            </Typography>
-                                                        </td>
+                                                        <td>+2</td>
+                                                        <td><input type='checkbox' value={1} onChange={(e) => console.log(e.target.value)} /></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
