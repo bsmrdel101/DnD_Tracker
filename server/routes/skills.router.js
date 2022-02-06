@@ -12,7 +12,7 @@ const router = express.Router();
 router.get('/:id', rejectUnauthenticated, (req, res) => {
     const sqlText = 
     `
-        SELECT "skill", "prof" FROM "proficiencies"
+        SELECT "name", "type", "prof" FROM "proficiencies"
         JOIN "skills"
         ON "proficiencies"."skill_id" = "skills"."id"
         WHERE "character_id" = $1;

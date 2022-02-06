@@ -36,7 +36,8 @@ CREATE TABLE "character_stats" (
 
 CREATE TABLE "skills" (
 	"id" SERIAL PRIMARY KEY,
-	"skill" TEXT
+	"name" TEXT,
+    "type" TEXT
 );
 
 CREATE TABLE "proficiencies" (
@@ -49,26 +50,26 @@ CREATE TABLE "proficiencies" (
 
 -- Insert data
 
-INSERT INTO "skills" ("skill")
+INSERT INTO "skills" ("name", "type")
 VALUES
-('Acrobatics'),
-('Animal Handling'),
-('Arcana'),
-('Athletics'),
-('Deception'),
-('History'),
-('Insight'),
-('Intimidation'),
-('Investigation'),
-('Medicine'),
-('Nature'),
-('Perception'),
-('Performance'),
-('Persuasion'),
-('Religion'),
-('Slight of Hand'),
-('Stealth'),
-('Survival');
+('Acrobatics', 'dex'),
+('Animal Handling', 'wis'),
+('Arcana', 'int'),
+('Athletics', 'str'),
+('Deception', 'char'),
+('History', 'int'),
+('Insight', 'wis'),
+('Intimidation', 'char'),
+('Investigation', 'int'),
+('Medicine', 'wis'),
+('Nature', 'wis'),
+('Perception', 'wis'),
+('Performance', 'char'),
+('Persuasion', 'char'),
+('Religion', 'wis'),
+('Slight of Hand', 'dex'),
+('Stealth', 'dex'),
+('Survival', 'wis');
 
 INSERT INTO "proficiencies" ("skill_id", "character_id")
 VALUES

@@ -19,6 +19,7 @@ function Character() {
 
     const selectedCharacter = useSelector((store) => store.selectedCharacterReducer);
     const healthReducer = useSelector((store) => store.healthReducer);
+    const skills = useSelector((store) => store.skillsReducer);
 
     const [damage, setDamage] = useState('');
     const [heal, setHeal] = useState('');
@@ -35,6 +36,10 @@ function Character() {
             type: 'FETCH_SKILLS'
         });
     }, [])
+
+    const getModifier = () => {
+
+    }
     
     return (
         <>  
@@ -149,10 +154,51 @@ function Character() {
                                     </CardContent>
                                 </Card>
                             </Grid>
-                            <Grid item sm={4} xs={12}>
+                            <Grid item sm={4.8} xs={12}>
                                 <Card sx={{ backgroundColor: '#f3c6c6', borderRadius: 4 }}>
                                     <CardContent>
-                                        <Typography gutterBottom variant="h5" component="div" textAlign="center">
+                                        <Typography gutterBottom variant="h4" component="div" textAlign="center">
+                                            Skills
+                                        </Typography>
+                                        <section className='skills-table'>
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Skill</th>
+                                                        <th>Modifier</th>
+                                                        <th>Proficient</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {skills.map((skill, i) => {
+                                                        return (
+                                                            <tr key={i}>
+                                                                <td>
+                                                                    <Typography gutterBottom variant="p" component="div">
+                                                                        {skill.name} <span className='skill-type'>({skill.type})</span>
+                                                                    </Typography>
+                                                                </td>
+                                                                <td>
+                                                                    {10 + 1}
+                                                                </td>
+                                                                <td>
+                                                                    {skill.prof &&
+                                                                        <p>*</p>
+                                                                    }
+                                                                </td>                                      
+                                                            </tr>
+                                                        );
+                                                    })}
+                                                </tbody>
+                                            </table>
+                                        </section>                                        
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                            <Grid item sm={4} xs={12}>
+                            <Card sx={{ backgroundColor: '#f3c6c6', borderRadius: 4 }}>
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h4" component="div" textAlign="center">
                                             Ability Scores
                                         </Typography>
                                         <section className='ability-score-container'>
@@ -215,44 +261,6 @@ function Character() {
                                                 </div>                                    
                                             </div>                                            
                                         </section>
-                                    </CardContent>
-                                </Card>
-                                <Card sx={{ backgroundColor: '#f3c6c6', borderRadius: 4, marginTop: 2 }}>
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h5" component="div" textAlign="center">
-                                            Skills
-                                        </Typography>
-                                        <section className='skills-table'>
-                                            <table>
-                                                <thead>
-                                                    <tr>
-                                                        <th>Skill</th>
-                                                        <th>Modifier</th>
-                                                        <th>Proficient</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <Typography gutterBottom variant="p" component="div">
-                                                                Acrobatics <span className='skill-type'>(dex)</span>
-                                                            </Typography>
-                                                        </td>
-                                                        <td>+2</td>
-                                                        <td><input type='checkbox' value={1} onChange={(e) => console.log(e.target.value)} /></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </section>                                        
-                                    </CardContent>
-                                </Card>
-                            </Grid>
-                            <Grid item sm={4} xs={12}>
-                                <Card sx={{ backgroundColor: '#f3c6c6', borderRadius: 4 }}>
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h5" component="div" textAlign="center">
-                                            Stuff 
-                                        </Typography>
                                     </CardContent>
                                 </Card>
                             </Grid>
