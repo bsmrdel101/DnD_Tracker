@@ -127,3 +127,15 @@
     }
 }
   
+
+/* Skills */
+.skills-table {
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.skill-type {
+    font-size: .8rem;
+    color: #706b6b;
+}

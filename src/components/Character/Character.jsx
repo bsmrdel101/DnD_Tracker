@@ -41,7 +41,7 @@ function Character() {
                         <Grid container spacing={4}>
                             <Grid item xs={12} sm={3}>
                                 {/* Basic character info */}
-                                <Card sx={{ backgroundColor: '#f3c6c6' }}>
+                                <Card sx={{ backgroundColor: '#f3c6c6', borderRadius: 4 }}>
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="div">
                                             <Avatar sx={{ width: 56, height: 56 }} alt="Avatar" src="orc_pic.png" className="avatar" />
@@ -74,7 +74,7 @@ function Character() {
                                     </CardContent>
                                 </Card>
                                 {/* Health management */}
-                                <Card sx={{ backgroundColor: '#f3c6c6', marginTop: 2 }}>
+                                <Card sx={{ backgroundColor: '#f3c6c6', marginTop: 2, borderRadius: 4 }}>
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="div" sx={{ fontSize: 30 }}>
                                             <FavoriteIcon id='heart-icon' /> {healthReducer.maxHealth} / {healthReducer.health} 
@@ -147,7 +147,7 @@ function Character() {
                                 </Card>
                             </Grid>
                             <Grid item sm={4} xs={12}>
-                                <Card sx={{ backgroundColor: '#f3c6c6' }}>
+                                <Card sx={{ backgroundColor: '#f3c6c6', borderRadius: 4 }}>
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="div" textAlign="center">
                                             Ability Scores
@@ -214,12 +214,42 @@ function Character() {
                                         </section>
                                     </CardContent>
                                 </Card>
+                                <Card sx={{ backgroundColor: '#f3c6c6', borderRadius: 4, marginTop: 2 }}>
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h5" component="div" textAlign="center">
+                                            Skills
+                                        </Typography>
+                                        <section className='skills-table'>
+                                            <table>
+                                                <thead>
+                                                    <th>Skill</th>
+                                                    <th>Modifier</th>
+                                                    <th>Proficient</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <Typography gutterBottom variant="p" component="div">
+                                                                Acrobatics <span className='skill-type'>(dex)</span>
+                                                            </Typography>
+                                                        </td>
+                                                        <td>
+                                                            <Typography gutterBottom variant="p" component="div">
+                                                                
+                                                            </Typography>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </section>                                        
+                                    </CardContent>
+                                </Card>
                             </Grid>
                             <Grid item sm={4} xs={12}>
-                                <Card sx={{ backgroundColor: '#f3c6c6' }}>
+                                <Card sx={{ backgroundColor: '#f3c6c6', borderRadius: 4 }}>
                                     <CardContent>
-                                        <Typography gutterBottom variant="h4" component="div" textAlign="center">
-                                            Stuff
+                                        <Typography gutterBottom variant="h5" component="div" textAlign="center">
+                                            Stuff 
                                         </Typography>
                                     </CardContent>
                                 </Card>
