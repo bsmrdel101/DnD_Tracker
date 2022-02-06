@@ -32,16 +32,16 @@ function Character() {
             type: 'GET_HEALTH'
         });
     }, [])
-
+    
     return (
         <>  
             {selectedCharacter.map((character) => {
                 return (
                     <div key={character.id} className='container'>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={4}>
+                        <Grid container spacing={4}>
+                            <Grid item xs={12} sm={3}>
                                 {/* Basic character info */}
-                                <Card sx={{ maxWidth: 345, backgroundColor: '#f3c6c6' }}>
+                                <Card sx={{ backgroundColor: '#f3c6c6' }}>
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="div">
                                             <Avatar sx={{ width: 56, height: 56 }} alt="Avatar" src="orc_pic.png" className="avatar" />
@@ -74,10 +74,10 @@ function Character() {
                                     </CardContent>
                                 </Card>
                                 {/* Health management */}
-                                <Card sx={{ maxWidth: 345, backgroundColor: '#f3c6c6', marginTop: 2 }}>
+                                <Card sx={{ backgroundColor: '#f3c6c6', marginTop: 2 }}>
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="div" sx={{ fontSize: 30 }}>
-                                            <FavoriteIcon id='heart-icon' /> {healthReducer.health} 
+                                            <FavoriteIcon id='heart-icon' /> {healthReducer.maxHealth} / {healthReducer.health} 
                                             <FavoriteIcon id='blue-heart-icon' /> {healthReducer.temp_health}    
                                             {/* Heal */}
                                             <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
@@ -142,6 +142,24 @@ function Character() {
                                                     onChange={(event) => setTempHealth(event.target.value)}
                                                 />
                                             </Box>  
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                            <Grid item sm={4} xs={12}>
+                                <Card sx={{ backgroundColor: '#f3c6c6' }}>
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h5" component="div" textAlign="center">
+                                            Ability Scores
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                            <Grid item sm={4} xs={12}>
+                                <Card sx={{ backgroundColor: '#f3c6c6' }}>
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h4" component="div" textAlign="center">
+                                            Stuff
                                         </Typography>
                                     </CardContent>
                                 </Card>
