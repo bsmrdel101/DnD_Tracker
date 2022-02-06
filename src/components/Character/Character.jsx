@@ -225,9 +225,11 @@ function Character() {
                                         <section className='skills-table'>
                                             <table>
                                                 <thead>
-                                                    <th>Skill</th>
-                                                    <th>Modifier</th>
-                                                    <th>Proficient</th>
+                                                    <tr>
+                                                        <th>Skill</th>
+                                                        <th>Modifier</th>
+                                                        <th>Proficient</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
