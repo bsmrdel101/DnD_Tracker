@@ -9,14 +9,16 @@ const userStrategy = require('../strategies/user.strategy');
 const router = express.Router();
 
 
-router.get('/', rejectUnauthenticated, (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     const sqlText = 
     `
-        SELECT * FROM "character_stats"
-        WHERE "user_id" = $1;
+        SELECT "skill", "prof" FROM "proficiencies"
+        JOIN "skills"
+        ON "proficiencies"."skill_id" = "skills"."id"
+        WHERE "character_id" = $1;
     `;
     const sqlValues = [
-        req.user.id
+        req.params.id
     ];
     
     pool.query(sqlText, sqlValues)

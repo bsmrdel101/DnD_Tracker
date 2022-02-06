@@ -4,9 +4,13 @@ import axios from 'axios';
 // Retrieves all of the character's skills
 function* fetchSkills(action) {
   try {
+    const responseId = yield axios ({
+        method: 'GET',
+        url: '/api/stats/selectedCharacterId'
+    });
     const response = yield axios ({
         method: 'GET',
-        url: '/api/skills'
+        url: `/api/skills/${responseId.data.selected_character}`
     });
     console.log(response.data);
     
