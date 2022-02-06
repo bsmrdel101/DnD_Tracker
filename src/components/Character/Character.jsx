@@ -152,6 +152,66 @@ function Character() {
                                         <Typography gutterBottom variant="h5" component="div" textAlign="center">
                                             Ability Scores
                                         </Typography>
+                                        <div className='ability-score-container'>
+                                            <div className='ability-scores-col-1'>
+                                                {/* Str */}
+                                                <div className='ability-score-box'>
+                                                    <Typography gutterBottom variant="p" component="div">
+                                                        Str
+                                                    </Typography>
+                                                    <Typography gutterBottom variant="h6" component="div">
+                                                        10
+                                                    </Typography>
+                                                </div>
+                                                {/* Dex */}
+                                                <div className='ability-score-box'>
+                                                    <Typography gutterBottom variant="p" component="div">
+                                                        Dex
+                                                    </Typography>
+                                                    <Typography gutterBottom variant="h6" component="div">
+                                                        10
+                                                    </Typography>
+                                                </div>
+                                                {/* Con */}
+                                                <div className='ability-score-box'>
+                                                    <Typography gutterBottom variant="p" component="div">
+                                                        Con
+                                                    </Typography>
+                                                    <Typography gutterBottom variant="h6" component="div">
+                                                        10
+                                                    </Typography>
+                                                </div>
+                                            </div>
+                                            <div className='ability-scores-col-2'>
+                                                {/* Int */}
+                                                <div className='ability-score-box'>
+                                                    <Typography gutterBottom variant="p" component="div">
+                                                        Int
+                                                    </Typography>
+                                                    <Typography gutterBottom variant="h6" component="div">
+                                                        10
+                                                    </Typography>
+                                                </div>
+                                                {/* Wis */}
+                                                <div className='ability-score-box'>
+                                                    <Typography gutterBottom variant="p" component="div">
+                                                        Wis
+                                                    </Typography>
+                                                    <Typography gutterBottom variant="h6" component="div">
+                                                        10
+                                                    </Typography>
+                                                </div>      
+                                                {/* Char */}
+                                                <div className='ability-score-box'>
+                                                    <Typography gutterBottom variant="p" component="div">
+                                                        Char
+                                                    </Typography>
+                                                    <Typography gutterBottom variant="h6" component="div">
+                                                        10
+                                                    </Typography>
+                                                </div>                                    
+                                            </div>                                            
+                                        </div>
                                     </CardContent>
                                 </Card>
                             </Grid>

@@ -88,3 +88,42 @@
 #temp-hp:hover {
     transform: scale(1.03, 1.03);
 }
+
+/* Ability Scores */
+.ability-score-box {
+    border: 1px solid black;
+    padding: 10px 10px 0 10px;
+    display: inline-block;
+    border-radius: 15px;
+}
+
+.ability-score-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.ability-scores-col-1 {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.ability-scores-col-2 {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .ability-scores-col-1 {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .ability-scores-col-2 {
+        flex-direction: column;
+    }
+}
+  
