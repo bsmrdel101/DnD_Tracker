@@ -6,7 +6,6 @@
 #blue-heart-icon {
     color: #4343bf;
     font-size: 25px;
-    padding-left: 15px;
 }
 
 /* Heal */
@@ -132,7 +131,6 @@
 
 /* Skills */
 .skills-table {
-    /* border: 2px solid black; */
     padding: 10px;
     border-radius: 15px;
 }
@@ -158,7 +156,7 @@
 
 .skills-table .table {
     background-color: #f5b9ba;
-    border-radius: 3px;
+    border: 2px solid black;
 }
 
 .skills-table tbody tr:nth-child(odd) {

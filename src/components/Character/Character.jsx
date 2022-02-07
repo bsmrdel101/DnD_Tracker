@@ -112,6 +112,7 @@ function Character() {
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="div" sx={{ fontSize: 30 }}>
                                             <FavoriteIcon id='heart-icon' /> {healthReducer.maxHealth} / {healthReducer.health} 
+                                            <br />
                                             <FavoriteIcon id='blue-heart-icon' /> {healthReducer.temp_health}    
                                             {/* Heal */}
                                             <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
@@ -210,7 +211,7 @@ function Character() {
                                                                 </td>
                                                                 <td>
                                                                     {skill.prof &&
-                                                                        <Typography><AdjustIcon sx={{ paddingTop:1, fontSize: 14 }} /></Typography>
+                                                                        <Typography><AdjustIcon sx={{ paddingTop:0.8, fontSize: 14 }} /></Typography>
                                                                     }
                                                                 </td>                                      
                                                             </tr>
