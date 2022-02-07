@@ -291,6 +291,14 @@ function Character() {
                                         </section>
                                     </CardContent>
                                 </Card>
+                                <Card sx={{ backgroundColor: '#f3c6c6', borderRadius: 4, marginTop: 2 }}>
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h4" component="div" textAlign="center">
+                                            Traits
+                                        </Typography>
+
+                                    </CardContent>
+                                </Card>
                             </Grid>
                         </Grid>
                     </div>

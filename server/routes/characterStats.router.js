@@ -66,7 +66,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 router.get('/health/:id', rejectUnauthenticated, (req, res) => {
     const sqlText = 
     `
-        SELECT "health" FROM "character_stats"
+        SELECT "max_health", "current_health", "temp_health" FROM "character_stats"
         WHERE "id" = $1;
     `;
     const sqlValues = [
@@ -81,7 +81,48 @@ router.get('/health/:id', rejectUnauthenticated, (req, res) => {
     })  
 });
 
-router.put('/', (req, res) => {
+router.put('/health/:id', rejectUnauthenticated, (req, res) => {
+    const sqlText = 
+    `
+        UPDATE "character_stats"
+        SET "current_health" = $1, "temp_health" = $2
+        WHERE "id" = $3;
+    `;
+    const sqlValues = [
+        req.body.current_health,
+        req.body.temp_health,
+        req.params.id
+    ];
+    
+    pool.query(sqlText, sqlValues)
+        .then((dbres) => res.sendStatus(201))
+        .catch((dberror) => {
+        console.log('Oops you messed up DB error', dberror);
+        res.sendStatus(500)
+    })  
+});
+
+router.put('/temp/:id', rejectUnauthenticated, (req, res) => {
+    const sqlText = 
+    `
+        UPDATE "character_stats"
+        SET "temp_health" = $1
+        WHERE "id" = $2;
+    `;
+    const sqlValues = [
+        req.body.temp_health,
+        req.params.id
+    ];
+    
+    pool.query(sqlText, sqlValues)
+        .then((dbres) => res.sendStatus(201))
+        .catch((dberror) => {
+        console.log('Oops you messed up DB error', dberror);
+        res.sendStatus(500)
+    })  
+});
+
+router.put('/', rejectUnauthenticated, (req, res) => {
     const sqlText = 
     `
         UPDATE "user"
