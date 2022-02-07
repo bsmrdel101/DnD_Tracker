@@ -159,6 +159,42 @@ function* tempHealth(action) {
   }
 }
 
+function* heal(action) {
+  try {
+    const responseId = yield axios ({
+        method: 'GET',
+        url: '/api/stats/selectedCharacterId'
+    });
+    const response = yield axios ({
+      method: 'GET',
+      url: `/api/stats/health/${responseId.data.selected_character}`
+    });
+
+    let current_health = response.data.current_health;
+    let temp_health = response.data.temp_health;
+    let max_health = response.data.max_health;
+
+    current_health += Number(action.payload);
+    if (current_health > max_health) {
+      current_health = max_health;
+    }
+
+    // Update current health
+    yield axios ({
+      method: 'PUT',
+      url: `/api/stats/health/${responseId.data.selected_character}`,
+      data: {current_health: current_health, temp_health: temp_health}
+    });
+
+    yield put({
+        type: 'SET_HEALTH',
+        payload: {max_health: max_health, current_health: current_health, temp_health: temp_health}
+    });
+  } catch (error) {
+    console.log('Error:', error);
+  }
+}
+
 
 function* characterSaga() {
   yield takeLatest('FETCH_CHARACTER', fetchCharacter);
@@ -167,6 +203,7 @@ function* characterSaga() {
   yield takeLatest('GET_HEALTH', getHealth);
   yield takeLatest('DAMAGE', dmgHealth);
   yield takeLatest('ADD_TEMP', tempHealth);
+  yield takeLatest('HEAL', heal);
 }
 
 export default characterSaga;

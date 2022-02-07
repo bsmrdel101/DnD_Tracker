@@ -111,7 +111,7 @@ function Character() {
                                 <Card sx={{ backgroundColor: '#f3c6c6', marginTop: 2, borderRadius: 4 }}>
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="div" sx={{ fontSize: 30 }}>
-                                            <FavoriteIcon id='heart-icon' /> {healthReducer.maxHealth} / {healthReducer.health} 
+                                            <FavoriteIcon id='heart-icon' /> {healthReducer.max_health} / {healthReducer.health} 
                                             <br />
                                             <FavoriteIcon id='blue-heart-icon' /> {healthReducer.temp_health}    
                                             {/* Heal */}
