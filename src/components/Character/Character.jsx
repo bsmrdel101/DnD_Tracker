@@ -11,6 +11,7 @@ import { Box } from '@mui/system';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import ShieldIcon from '@mui/icons-material/Shield';
 import { Grid } from '@mui/material';
+import AdjustIcon from '@mui/icons-material/Adjust';
 
 import './Character.css'
 
@@ -37,8 +38,33 @@ function Character() {
         });
     }, [])
 
-    const getModifier = () => {
+    const getModifier = (type, prof) => {
+        let baseAbility = getAbilityScore(type);
+        let calculatedModifier = Math.floor((baseAbility - 10) / 2);
 
+        if (prof) {
+            calculatedModifier += selectedCharacter[0].prof_bonus;
+        }
+        return calculatedModifier;
+    }
+
+    const getAbilityScore = (type) => {
+        switch (type) {
+            case 'str':
+                return selectedCharacter[0].str;
+            case 'dex':
+                return selectedCharacter[0].dex;
+            case 'con':
+                return selectedCharacter[0].con;
+            case 'wis':
+                return selectedCharacter[0].wis;
+            case 'int':
+                return selectedCharacter[0].int;
+            case 'char':
+                return selectedCharacter[0].char;
+            default:
+                break;
+        }
     }
     
     return (
@@ -161,12 +187,12 @@ function Character() {
                                             Skills
                                         </Typography>
                                         <section className='skills-table'>
-                                            <table>
+                                            <table className='table'>
                                                 <thead>
                                                     <tr>
                                                         <th>Skill</th>
                                                         <th>Modifier</th>
-                                                        <th>Proficient</th>
+                                                        <th>Prof</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -179,11 +205,12 @@ function Character() {
                                                                     </Typography>
                                                                 </td>
                                                                 <td>
-                                                                    {10 + 1}
+                                                                    {getModifier(skill.type, skill.prof) >= 0 && '+'}
+                                                                    {getModifier(skill.type, skill.prof)}
                                                                 </td>
                                                                 <td>
                                                                     {skill.prof &&
-                                                                        <p>*</p>
+                                                                        <Typography><AdjustIcon sx={{ paddingTop:1, fontSize: 14 }} /></Typography>
                                                                     }
                                                                 </td>                                      
                                                             </tr>

@@ -23,7 +23,7 @@
 
 #add-hp {
     padding-bottom: 15px;
-    background-color: #e5abab;
+    background-color: #f5b9ba;
     border: 0;
     border-radius: 10px;
     padding-left: 6px;
@@ -50,7 +50,7 @@
 
 #dmg-hp {
     padding-bottom: 15px;
-    background-color: #e5abab;
+    background-color: #f5b9ba;
     border: 0;
     border-radius: 10px;
     padding-left: 6px;
@@ -77,7 +77,7 @@
 
 #temp-hp {
     padding-bottom: 15px;
-    background-color: #e5abab;
+    background-color: #f5b9ba;
     border: 0;
     border-radius: 10px;
     padding-left: 6px;
@@ -95,6 +95,8 @@
     padding: 10px 10px 0 10px;
     display: inline-block;
     border-radius: 15px;
+    min-width: 30px;
+    text-align: center;
 }
 
 .ability-score-container {
@@ -130,7 +132,7 @@
 
 /* Skills */
 .skills-table {
-    border: 2px solid black;
+    /* border: 2px solid black; */
     padding: 10px;
     border-radius: 15px;
 }
@@ -138,4 +140,31 @@
 .skill-type {
     font-size: .8rem;
     color: #706b6b;
+}
+
+.table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.table td {
+    border-bottom: 1px solid black;
+}
+
+.table th {
+    border-bottom: 2px solid black;
+}
+
+.skills-table .table {
+    background-color: #f5b9ba;
+    border-radius: 3px;
+}
+
+.skills-table tbody tr:nth-child(odd) {
+    background-color: #e6abac;
+}
+
+.skills-table tbody tr:hover {
+    background-color: #f3c4c4;
 }
