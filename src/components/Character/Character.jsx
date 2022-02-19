@@ -11,6 +11,7 @@ import HealthManagement from '../HealthManagement/HealthManagement';
 import CharacterInfoBox from '../CharacterInfoBox/CharacterInfoBox';
 import SkillsTable from '../SkillsTable/SkillsTable';
 import AbilityScores from '../AbilityScoresBox/AbilityScoresBox';
+import AbilityTrackers from '../AbilityTrackers/AbilityTrackers';
 
 function Character() {
     const dispatch = useDispatch();
@@ -45,20 +46,13 @@ function Character() {
                             </Grid>
                             <Grid item sm={4.8} xs={12}>
                                 {/* Skills table */}
-                                <SkillsTable skills={skills} selectedCharacter={selectedCharacter} />
+                                <SkillsTable skills={skills} character={character} />
                             </Grid>
                             <Grid item sm={4} xs={12}>
                                 {/* Ability scores */}
                                 <AbilityScores character={character} />
                                 {/* Ability trackers */}
-                                <Card sx={{ backgroundColor: '#f3c6c6', borderRadius: 4, marginTop: 2 }}>
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h4" component="div" textAlign="center">
-                                            Ability Trackers
-                                        </Typography>
-
-                                    </CardContent>
-                                </Card>
+                                <AbilityTrackers character={character} />
                             </Grid>
                         </Grid>
                     </div>

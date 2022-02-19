@@ -7,14 +7,14 @@ import AdjustIcon from '@mui/icons-material/Adjust';
 
 import './SkillsTable.css';
 
-function SkillsTable({ skills, selectedCharacter }) {
+function SkillsTable({ skills, character }) {
 
     const getModifier = (type, prof) => {
         let baseAbility = getAbilityScore(type);
         let calculatedModifier = Math.floor((baseAbility - 10) / 2);
 
         if (prof) {
-            calculatedModifier += selectedCharacter[0].prof_bonus;
+            calculatedModifier += character.prof_bonus;
         }
         return calculatedModifier;
     }
@@ -22,17 +22,17 @@ function SkillsTable({ skills, selectedCharacter }) {
     const getAbilityScore = (type) => {
         switch (type) {
             case 'str':
-                return selectedCharacter[0].str;
+                return character.str;
             case 'dex':
-                return selectedCharacter[0].dex;
+                return character.dex;
             case 'con':
-                return selectedCharacter[0].con;
+                return character.con;
             case 'wis':
-                return selectedCharacter[0].wis;
+                return character.wis;
             case 'int':
-                return selectedCharacter[0].int;
+                return character.int;
             case 'char':
-                return selectedCharacter[0].char;
+                return character.char;
             default:
                 break;
         }
