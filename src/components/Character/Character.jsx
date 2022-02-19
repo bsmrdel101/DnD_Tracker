@@ -4,16 +4,12 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
-import { Box } from '@mui/system';
-import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
-import ShieldIcon from '@mui/icons-material/Shield';
 import { Grid } from '@mui/material';
 import AdjustIcon from '@mui/icons-material/Adjust';
-import CharacterInfoBox from '../CharacterInfoBox/CharacterInfoBox';
 
 import './Character.css'
+import HealthManagement from '../HealthManagement/HealthManagement';
+import CharacterInfoBox from '../CharacterInfoBox/CharacterInfoBox';
 
 function Character() {
     const dispatch = useDispatch();
@@ -21,10 +17,6 @@ function Character() {
     const selectedCharacter = useSelector((store) => store.selectedCharacterReducer);
     const healthReducer = useSelector((store) => store.healthReducer);
     const skills = useSelector((store) => store.skillsReducer);
-
-    const [damage, setDamage] = useState('');
-    const [heal, setHeal] = useState('');
-    const [tempHealth, setTempHealth] = useState('');
 
     useEffect(() => {
         dispatch({
@@ -77,78 +69,7 @@ function Character() {
                                 {/* Basic character info */}
                                 <CharacterInfoBox character={character} />
                                 {/* Health management */}
-                                <Card sx={{ backgroundColor: '#f3c6c6', marginTop: 2, borderRadius: 4 }}>
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h5" component="div" sx={{ fontSize: 30 }}>
-                                            <FavoriteIcon id='heart-icon' /> {healthReducer.max_health} / {healthReducer.health} 
-                                            <br />
-                                            <FavoriteIcon id='blue-heart-icon' /> {healthReducer.temp_health}    
-                                            {/* Heal */}
-                                            <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                                <button 
-                                                    id='add-hp-btn'
-                                                    onClick={() => {
-                                                        dispatch({type:'HEAL', payload: heal});
-                                                        setHeal('');
-                                                    }}>
-                                                        <LocalHospitalIcon 
-                                                            id='add-hp-icon'
-                                                            sx={{ color: '#119711', mr: 1, my: 0.5 }} 
-                                                        />
-                                                </button>
-                                                <input 
-                                                    id='add-hp'
-                                                    placeholder="Heal"
-                                                    type="number"
-                                                    value={heal}
-                                                    onChange={(event) => setHeal(event.target.value)}
-                                                />
-                                            </Box>  
-                                            {/* Damage */}
-                                            <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                                <button 
-                                                    id='dmg-hp-btn' 
-                                                    onClick={() => {
-                                                        dispatch({type:'DAMAGE', payload: damage});
-                                                        setDamage('');
-                                                    }}>
-                                                        <IndeterminateCheckBoxIcon 
-                                                            id='dmg-hp-icon' 
-                                                            sx={{ color: 'red', mr: 1, my: 0.5 }} 
-                                                        />
-                                                </button>
-                                                <input 
-                                                    id='dmg-hp'
-                                                    placeholder="Damage" 
-                                                    type="number"
-                                                    value={damage}
-                                                    onChange={(event) => setDamage(event.target.value)}
-                                                />
-                                            </Box>  
-                                            {/* Add temp health */}
-                                            <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                                <button 
-                                                    id='temp-hp-btn' 
-                                                    onClick={() => {
-                                                        dispatch({type:'ADD_TEMP', payload: tempHealth});
-                                                        setTempHealth('');
-                                                    }}>
-                                                        <ShieldIcon 
-                                                            id='temp-hp-icon' 
-                                                            sx={{ color: '#4343bf', mr: 1, my: 0.5 }} 
-                                                        />
-                                                </button>
-                                                <input 
-                                                    id='temp-hp'
-                                                    placeholder="Temporary Health" 
-                                                    type="number"
-                                                    value={tempHealth}
-                                                    onChange={(event) => setTempHealth(event.target.value)}
-                                                />
-                                            </Box>  
-                                        </Typography>
-                                    </CardContent>
-                                </Card>
+                                <HealthManagement healthReducer={healthReducer} />
                             </Grid>
                             <Grid item sm={4.8} xs={12}>
                                 <Card sx={{ backgroundColor: '#f3c6c6', borderRadius: 4 }}>
