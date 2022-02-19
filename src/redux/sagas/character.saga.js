@@ -207,7 +207,7 @@ function* giveInspiration(action) {
     });
 
     yield put({
-      type: 'FETCH_CHARACTER'
+      type: 'GET_SELECTED_CHARACTER'
     });
   } catch (error) {
     console.log('Error:', error);
@@ -226,7 +226,7 @@ function* revokeInspiration(action) {
     });
 
     yield put({
-      type: 'FETCH_CHARACTER'
+      type: 'GET_SELECTED_CHARACTER'
     });
   } catch (error) {
     console.log('Error:', error);
