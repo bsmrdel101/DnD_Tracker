@@ -1,0 +1,36 @@
+.skills-table {
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.skill-type {
+    font-size: .8rem;
+    color: var(--text);
+}
+
+.table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.table td {
+    border-bottom: 1px solid black;
+}
+
+.table th {
+    border-bottom: 2px solid black;
+}
+
+.skills-table .table {
+    background-color: var(--primary);
+    border: 2px solid black;
+}
+
+.skills-table tbody tr:nth-child(odd) {
+    background-color: var(--primary-dark);
+}
+
+.skills-table tbody tr:hover {
+    background-color: #f3c4c4;
+}
