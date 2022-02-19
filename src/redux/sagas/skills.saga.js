@@ -12,7 +12,6 @@ function* fetchSkills(action) {
         method: 'GET',
         url: `/api/skills/${responseId.data.selected_character}`
     });
-    console.log(response.data);
     
     yield put({
         type: 'SET_SKILLS',

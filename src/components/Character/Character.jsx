@@ -8,7 +8,6 @@ import HealthManagement from '../HealthManagement/HealthManagement';
 import CharacterInfoBox from '../CharacterInfoBox/CharacterInfoBox';
 import SkillsTable from '../SkillsTable/SkillsTable';
 import AbilityScores from '../AbilityScoresBox/AbilityScoresBox';
-import AbilityTrackers from '../AbilityTrackers/AbilityTrackers';
 import TraitsBox from '../TraitsBox/TraitsBox';
 
 function Character() {

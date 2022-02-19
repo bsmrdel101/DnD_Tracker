@@ -29,6 +29,7 @@ function* selectCharacter(action) {
       method: 'GET',
       url: `/api/stats/${responseId.data.selected_character}`
     });
+    console.log(response.data);
     
     yield put({
         type: 'SET_SELECTED_CHARACTER',
@@ -49,7 +50,7 @@ function* postCharacter(action) {
     });
     
     yield put({
-        type: 'GET_SELECTED_CHARACTER'
+      type: 'GET_SELECTED_CHARACTER'
     });
   } catch (error) {
     console.log('Error:', error);

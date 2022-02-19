@@ -26,6 +26,9 @@ function Dashboard() {
       type: 'POST_SELECTED_CHARACTER',
       payload: character.id
     });
+    dispatch({
+      type: 'FETCH_USER'
+    });
     setTimeout(() => {history.push('/character')}, 100);
   }
 
