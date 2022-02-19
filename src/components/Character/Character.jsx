@@ -12,6 +12,9 @@ import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import ShieldIcon from '@mui/icons-material/Shield';
 import { Grid } from '@mui/material';
 import AdjustIcon from '@mui/icons-material/Adjust';
+import StarIcon from '@mui/icons-material/Star';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import { IconButton } from '@mui/material';
 
 import './Character.css'
 
@@ -66,6 +69,18 @@ function Character() {
                 break;
         }
     }
+
+    const giveInspiration = () => {
+        dispatch({
+            type: 'GIVE_INSPIRATION'
+        });
+    }
+
+    const revokeInspiration = () => {
+        dispatch({
+            type: 'REVOKE_INSPIRATION'
+        });
+    }
     
     return (
         <>  
@@ -104,6 +119,18 @@ function Character() {
                                         </Typography>
                                         <Typography variant="p" component="div">
                                             <span className='bold-text'>Movement:</span> {character.movement}
+                                        </Typography>
+                                        <Typography variant="p" component="div">
+                                            <span className='bold-text'>Inspiration:</span> 
+                                            {character.inspiration ?
+                                                <IconButton onClick={revokeInspiration}>
+                                                    <StarIcon />
+                                                </IconButton>
+                                            :
+                                                <IconButton onClick={giveInspiration}>
+                                                    <StarBorderIcon />
+                                                </IconButton>
+                                            }
                                         </Typography>
                                     </CardContent>
                                 </Card>

@@ -6,6 +6,17 @@ body,
   width: 100%;
 }
 
+/* Global variables */
+:root {
+  --background-color: #360000;
+  --background-color-secondary: #871313;
+  --card: #f3c6c6;
+  --deep-blue: #4343bf;
+  --primary: #f5b9ba;
+  --primary-dark: #e6abac;
+  --text: rgb(97, 97, 97);
+}
+
 /* Other browsers */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

@@ -195,6 +195,44 @@ function* heal(action) {
   }
 }
 
+function* giveInspiration(action) {
+  try {
+    const responseId = yield axios ({
+        method: 'GET',
+        url: '/api/stats/selectedCharacterId'
+    });
+    yield axios ({
+      method: 'PUT',
+      url: `/api/stats/giveInspiration/${responseId.data.selected_character}`
+    });
+
+    yield put({
+      type: 'FETCH_CHARACTER'
+    });
+  } catch (error) {
+    console.log('Error:', error);
+  }
+}
+
+function* revokeInspiration(action) {
+  try {
+    const responseId = yield axios ({
+        method: 'GET',
+        url: '/api/stats/selectedCharacterId'
+    });
+    yield axios ({
+      method: 'PUT',
+      url: `/api/stats/revokeInspiration/${responseId.data.selected_character}`
+    });
+
+    yield put({
+      type: 'FETCH_CHARACTER'
+    });
+  } catch (error) {
+    console.log('Error:', error);
+  }
+}
+
 
 function* characterSaga() {
   yield takeLatest('FETCH_CHARACTER', fetchCharacter);
@@ -204,6 +242,8 @@ function* characterSaga() {
   yield takeLatest('DAMAGE', dmgHealth);
   yield takeLatest('ADD_TEMP', tempHealth);
   yield takeLatest('HEAL', heal);
+  yield takeLatest('GIVE_INSPIRATION', giveInspiration);
+  yield takeLatest('REVOKE_INSPIRATION', revokeInspiration);
 }
 
 export default characterSaga;

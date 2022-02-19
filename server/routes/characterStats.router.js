@@ -142,4 +142,43 @@ router.put('/', rejectUnauthenticated, (req, res) => {
     })  
 });
 
+router.put('/giveInspiration/:id', rejectUnauthenticated, (req, res) => {
+    const sqlText = 
+    `
+        UPDATE "character_stats"
+        SET "inspiration" = TRUE
+        WHERE "id" = $1;
+    `;
+    const sqlValues = [
+        req.params.id
+    ];
+    
+    pool.query(sqlText, sqlValues)
+        .then((dbres) => res.sendStatus(201))
+        .catch((dberror) => {
+        console.log('Oops you messed up DB error', dberror);
+        res.sendStatus(500)
+    })  
+});
+
+router.put('/revokeInspiration/:id', rejectUnauthenticated, (req, res) => {
+    const sqlText = 
+    `
+        UPDATE "character_stats"
+        SET "inspiration" = FALSE
+        WHERE "id" = $1;
+    `;
+    const sqlValues = [
+        req.params.id
+    ];
+    
+    pool.query(sqlText, sqlValues)
+        .then((dbres) => res.sendStatus(201))
+        .catch((dberror) => {
+        console.log('Oops you messed up DB error', dberror);
+        res.sendStatus(500)
+    })  
+});
+
+
 module.exports = router;

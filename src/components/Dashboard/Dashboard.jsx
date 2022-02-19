@@ -7,6 +7,8 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 
+import './Dashboard.css';
+
 function Dashboard() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -29,11 +31,11 @@ function Dashboard() {
 
   return (
     <center>
-      <h1>Your Characters</h1>
+      <h1 className='dashboard-title'>Your Characters</h1>
       {characters.map((character) => {
         return (
           <div className="character-selection-container" key={character.id}>
-            <Card sx={{ maxWidth: 345, backgroundColor: '#e7e7e7' }} onClick={() => handleSelection(character)}>
+            <Card sx={{ maxWidth: 345, backgroundColor: 'var(--card)' }} onClick={() => handleSelection(character)}>
                 <CardActionArea>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
