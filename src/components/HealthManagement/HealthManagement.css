@@ -1,0 +1,104 @@
+#heart-icon {
+    color: red;
+    font-size: 25px;
+}
+
+#blue-heart-icon {
+    color: var(--deep-blue);
+    font-size: 25px;
+}
+
+/* Heal */
+#add-hp-btn {
+    border: 0;
+    background-color: var(--card);
+    padding: 0;
+}
+
+#add-hp-icon:hover {
+    cursor: pointer;
+    transform: scale(1.1, 1.1);
+}
+
+#add-hp {
+    padding-bottom: 15px;
+    background-color: var(--primary);
+    border: 0;
+    border-radius: 10px;
+    padding-left: 6px;
+    box-shadow: 0 6px 3px -2px rgba(0,0,0,0.301);
+    transition: ease 0.2s;
+    color: var(--text);
+}
+
+#add-hp::placeholder {
+    color: var(--text);
+}
+
+#add-hp:hover {
+    transform: scale(1.03, 1.03);
+}
+
+
+/* Damage */
+#dmg-hp-btn {
+    border: 0;
+    background-color: var(--card);
+    padding: 8px 0 0 0;
+}
+
+#dmg-hp-icon:hover {
+    cursor: pointer;
+    transform: scale(1.1, 1.1);
+}
+
+#dmg-hp {
+    padding-bottom: 15px;
+    background-color: var(--primary);
+    border: 0;
+    border-radius: 10px;
+    padding-left: 6px;
+    box-shadow: 0 6px 3px -2px rgba(0,0,0,0.301);
+    transition: ease 0.2s;
+    color: var(--text);
+}
+
+#dmg-hp::placeholder {
+    color: var(--text);
+}
+
+#dmg-hp:hover {
+    transform: scale(1.03, 1.03);
+}
+
+
+/* Temp health */
+#temp-hp-btn {
+    border: 0;
+    background-color: var(--card);
+    padding: 8px 0 0 0;
+}
+
+#temp-hp-icon:hover {
+    cursor: pointer;
+    transform: scale(1.1, 1.1);
+}
+
+#temp-hp {
+    padding-bottom: 15px;
+    background-color: var(--primary);
+    border: 0;
+    border-radius: 10px;
+    padding-left: 6px;
+    box-shadow: 0 6px 3px -2px rgba(0,0,0,0.301);
+    transition: ease 0.2s;
+    color: var(--text);
+}
+
+#temp-hp::placeholder {
+    color: var(--text);
+}
+
+#temp-hp:hover {
+    transform: scale(1.03, 1.03);
+}

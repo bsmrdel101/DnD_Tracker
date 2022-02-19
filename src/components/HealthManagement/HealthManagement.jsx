@@ -11,6 +11,8 @@ import { Box } from '@mui/system';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import ShieldIcon from '@mui/icons-material/Shield';
 
+import './HealthManagement.css';
+
 function HealthManagement({ healthReducer }) {
     const dispatch = useDispatch();
 
