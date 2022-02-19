@@ -1,8 +1,5 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
 import { useEffect } from 'react';
 import { Grid } from '@mui/material';
 
@@ -12,6 +9,7 @@ import CharacterInfoBox from '../CharacterInfoBox/CharacterInfoBox';
 import SkillsTable from '../SkillsTable/SkillsTable';
 import AbilityScores from '../AbilityScoresBox/AbilityScoresBox';
 import AbilityTrackers from '../AbilityTrackers/AbilityTrackers';
+import TraitsBox from '../TraitsBox/TraitsBox';
 
 function Character() {
     const dispatch = useDispatch();
@@ -41,6 +39,7 @@ function Character() {
                             <Grid item xs={12} sm={3}>
                                 {/* Basic character info */}
                                 <CharacterInfoBox character={character} />
+
                                 {/* Health management */}
                                 <HealthManagement healthReducer={healthReducer} />
                             </Grid>
@@ -51,8 +50,9 @@ function Character() {
                             <Grid item sm={4} xs={12}>
                                 {/* Ability scores */}
                                 <AbilityScores character={character} />
-                                {/* Ability trackers */}
-                                <AbilityTrackers character={character} />
+
+                                {/* Traits */}
+                                <TraitsBox character={character} />
                             </Grid>
                         </Grid>
                     </div>
