@@ -34,7 +34,8 @@ function WeaponsBox() {
                                 <th>To Hit</th>
                                 <th>Damage</th>
                                 <th>Range</th>
-                                <th>Property</th>
+                                <th>Damage Type</th>
+                                <th>Quantity</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,10 +43,11 @@ function WeaponsBox() {
                                 return (
                                     <tr key={weapon.id}>
                                         <td>{weapon.name}</td>
-                                        <td>{weapon.to_hit}</td>
+                                        <td>+{weapon.to_hit}</td>
                                         <td>{weapon.damage}</td>
-                                        <td>{weapon.range}</td>
-                                        <td>{weapon.property}</td>
+                                        <td>{weapon.range} ft</td>
+                                        <td>{weapon.damage_type}</td>
+                                        <td>{weapon.quantity}</td>
                                     </tr>
                                 );
                             })}
