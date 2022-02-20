@@ -12,6 +12,7 @@ const userRouter = require('./routes/user.router');
 const characterStatsRouter = require('./routes/characterStats.router');
 const selectionRouter = require('./routes/selection.router');
 const skillsRouter = require('./routes/skills.router');
+const equipmentRouter = require('./routes/equipment.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -29,6 +30,7 @@ app.use('/api/user', userRouter);
 app.use('/api/stats', characterStatsRouter);
 app.use('/api/selection', selectionRouter);
 app.use('/api/skills', skillsRouter);
+app.use('/api/equipment', equipmentRouter);
 
 // Serve static files
 app.use(express.static('build'));

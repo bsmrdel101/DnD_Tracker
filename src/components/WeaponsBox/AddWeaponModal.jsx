@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Modal from '@mui/material/Modal';
 import { Box } from '@mui/system';
@@ -23,28 +23,32 @@ const style = {
 
 function AddWeaponModal() {
     const dispatch = useDispatch();
+    const weapons = useSelector(store => store.weaponsReducer);
 
     const [addWeapon, setAddWeapon] = useState(false);
     const [addMagicItem, setAddMagicItem] = useState(false);
     const [addArmor, setAddArmor] = useState(false);
 
     useEffect(() => {
-
+        dispatch({
+            type: 'FETCH_WEAPONS'
+        });
     }, [])
 
     // Input values for new weapon
     const [name, setName] = useState('');
-    const [range, setRange] = useState('');
+    const [type, setType] = useState('');
+    const [range, setRange] = useState(0);
     const [damage, setDamage] = useState('');
     const [handedness, setHandedness] = useState('');
     const [damageType, setDamageType] = useState('');
-    const [magicalMod, setMagicalMod] = useState('');
+    const [magicalMod, setMagicalMod] = useState(0);
     const [proficiency, setProficiency] = useState('');
     const [property, setProperty] = useState('');
-    const [toHit, setToHit] = useState('');
-    const [weight, setWeight] = useState('');
-    const [quantity, setQuantity] = useState('');
-    const [price, setPrice] = useState('');
+    const [toHit, setToHit] = useState(0);
+    const [weight, setWeight] = useState(0);
+    const [quantity, setQuantity] = useState(0);
+    const [price, setPrice] = useState(1);
     const [description, setDescription] = useState('');
 
     const handleClose = () => {
@@ -76,97 +80,102 @@ function AddWeaponModal() {
                                 <div className='label-input'>
                                     <label>Type</label>
                                     <input 
-                                        placeholder='Type'
+                                        placeholder='Melee'
                                         value={type}
                                         onChange={(e) => setType(e.target.value)}
                                     />
                                 </div>
                                 <div className='label-input'>
-                                    <label>Name</label>
+                                    <label>Range</label>
                                     <input 
-                                        placeholder='Dagger'
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
+                                        placeholder='25/100'
+                                        value={range}
+                                        onChange={(e) => setRange(e.target.value)}
                                     />
                                 </div>
                                 <div className='label-input'>
-                                    <label>Name</label>
+                                    <label>Damage</label>
                                     <input 
-                                        placeholder='Dagger'
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
+                                        placeholder='1d4'
+                                        value={damage}
+                                        onChange={(e) => setDamage(e.target.value)}
                                     />
                                 </div>
                                 <div className='label-input'>
-                                    <label>Name</label>
+                                    <label>Handedness</label>
                                     <input 
-                                        placeholder='Dagger'
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
+                                        placeholder='One Handed'
+                                        value={handedness}
+                                        onChange={(e) => setHandedness(e.target.value)}
                                     />
                                 </div>
                                 <div className='label-input'>
-                                    <label>Name</label>
+                                    <label>Damage Type</label>
                                     <input 
-                                        placeholder='Dagger'
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
+                                        placeholder='Piercing'
+                                        value={damageType}
+                                        onChange={(e) => setDamageType(e.target.value)}
                                     />
                                 </div>
                                 <div className='label-input'>
-                                    <label>Name</label>
+                                    <label>Magical Modifier</label>
                                     <input 
-                                        placeholder='Dagger'
+                                        placeholder='Magical Modifier'
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
+                                        type='number'
                                     />
                                 </div>
                                 <div className='label-input'>
-                                    <label>Name</label>
+                                    <label>Proficiency</label>
                                     <input 
-                                        placeholder='Dagger'
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
+                                        placeholder='Simple'
+                                        value={proficiency}
+                                        onChange={(e) => setProficiency(e.target.value)}
                                     />
                                 </div>
                                 <div className='label-input'>
-                                    <label>Name</label>
+                                    <label>Property</label>
                                     <input 
-                                        placeholder='Dagger'
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
+                                        placeholder='Finesse'
+                                        value={property}
+                                        onChange={(e) => setProperty(e.target.value)}
                                     />
                                 </div>
                                 <div className='label-input'>
-                                    <label>Name</label>
+                                    <label>To Hit Modifier</label>
                                     <input 
-                                        placeholder='Dagger'
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
+                                        placeholder='To Hit Modifier'
+                                        value={toHit}
+                                        onChange={(e) => setToHit(e.target.value)}
+                                        type='number'
                                     />
                                 </div>
                                 <div className='label-input'>
-                                    <label>Name</label>
+                                    <label>Weight</label>
                                     <input 
-                                        placeholder='Dagger'
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
+                                        placeholder='1'
+                                        value={weight}
+                                        onChange={(e) => setWeight(e.target.value)}
+                                        type='number'
                                     />
                                 </div>
                                 <div className='label-input'>
-                                    <label>Name</label>
+                                    <label>Quantity</label>
                                     <input 
-                                        placeholder='Dagger'
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
+                                        placeholder='1'
+                                        value={quantity}
+                                        onChange={(e) => setQuantity(e.target.value)}
+                                        type='number'
                                     />
                                 </div>
                                 <div className='label-input'>
-                                    <label>Name</label>
-                                    <input 
-                                        placeholder='Dagger'
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
+                                    <label>Price</label>
+                                    <input
+                                        placeholder='5'
+                                        value={price}
+                                        onChange={(e) => setPrice(e.target.value)}
+                                        type='number'
                                     />
                                 </div>
                             </section>

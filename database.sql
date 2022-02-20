@@ -52,7 +52,7 @@ CREATE TABLE "weapons" (
     "id" SERIAL PRIMARY KEY,
     "name" TEXT,
     "type" TEXT,
-    "range" INTEGER,
+    "range" TEXT,
     "damage" TEXT,
     "handedness" TEXT,
     "damage_type" TEXT,
@@ -64,8 +64,7 @@ CREATE TABLE "weapons" (
     "quantity" INTEGER,
     "price" INTEGER,
     "currency" TEXT,
-    "description" TEXT,
-    "user_id" INTEGER REFERENCES "user"(id)
+    "description" TEXT
 );
 
 

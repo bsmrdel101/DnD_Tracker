@@ -12,6 +12,7 @@ function* fetchWeapons(action) {
         method: 'GET',
         url: `/api/equipment/weapons/${responseId.data.selected_character}`
     });
+    console.log(response.data);
     
     yield put({
         type: 'SET_WEAPONS',
