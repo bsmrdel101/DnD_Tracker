@@ -23,22 +23,15 @@ const style = {
 
 function AddWeaponModal() {
     const dispatch = useDispatch();
-    const weapons = useSelector(store => store.weaponsReducer);
 
     const [addWeapon, setAddWeapon] = useState(false);
     const [addMagicItem, setAddMagicItem] = useState(false);
     const [addArmor, setAddArmor] = useState(false);
 
-    useEffect(() => {
-        dispatch({
-            type: 'FETCH_WEAPONS'
-        });
-    }, [])
-
     // Input values for new weapon
     const [name, setName] = useState('');
     const [type, setType] = useState('');
-    const [range, setRange] = useState('');
+    const [range, setRange] = useState('0');
     const [damage, setDamage] = useState('');
     const [handedness, setHandedness] = useState('');
     const [damageType, setDamageType] = useState('');
@@ -46,13 +39,53 @@ function AddWeaponModal() {
     const [proficiency, setProficiency] = useState('');
     const [property, setProperty] = useState('');
     const [toHit, setToHit] = useState(0);
-    const [weight, setWeight] = useState('');
-    const [quantity, setQuantity] = useState('');
-    const [price, setPrice] = useState('');
+    const [weight, setWeight] = useState(1);
+    const [quantity, setQuantity] = useState(1);
+    const [price, setPrice] = useState(0);
     const [currency, setCurrency] = useState(4);
     const [description, setDescription] = useState('');
 
     const handleClose = () => {
+        setAddWeapon(false);
+    }
+
+    // Takes all of the inputs and posts a new weapon to the database
+    const handleAddWeapon = () => {
+        dispatch({
+            type: 'ADD_WEAPON',
+            payload: {
+                name: name,
+                type: type,
+                range: range,
+                damage: damage,
+                handedness: handedness,
+                damage_type: damageType,
+                magical_modifier: magicalMod,
+                proficiency: proficiency,
+                property: property,
+                to_hit: toHit,
+                weight: weight,
+                quantity: quantity,
+                price: price,
+                currency: currency,
+                description: description
+            }    
+        });
+        setName('');
+        setType('');
+        setRange('');
+        setDamage('');
+        setHandedness('');
+        setDamageType('');
+        setMagicalMod(0);
+        setProficiency('');
+        setProperty('');
+        setToHit(0);
+        setWeight(1);
+        setQuantity(1);
+        setPrice(0);
+        setCurrency(4);
+        setDescription('');
         setAddWeapon(false);
     }
 
@@ -68,7 +101,7 @@ function AddWeaponModal() {
                         <center>
                             <h2>New Weapon</h2>
                         </center>
-                        <form>
+                        <form onSubmit={handleAddWeapon}>
                             <section className='modal-input-container'>
                                 <div className='label-input'>
                                     <label>Name</label>
@@ -204,7 +237,7 @@ function AddWeaponModal() {
                                     onChange={(e) => setDescription(e.target.value)}
                                 />
                                 <br/>
-                                <button className='modal-btn'>Submit</button>
+                                <button className='modal-btn' type='submit'>Submit</button>
                             </center>
                         </form>
                     </Box>
