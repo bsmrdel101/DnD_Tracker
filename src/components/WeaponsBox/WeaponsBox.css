@@ -1,0 +1,9 @@
+.table-btn {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.table-btn:hover {
+    color: var(--background-color-secondary);
+    text-decoration: underline;
+}

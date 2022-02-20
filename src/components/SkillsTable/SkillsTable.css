@@ -1,4 +1,4 @@
-.skills-table {
+.table-container {
     padding: 10px;
     border-radius: 15px;
 }
@@ -22,15 +22,15 @@
     border-bottom: 2px solid black;
 }
 
-.skills-table .table {
+.table-container .table {
     background-color: var(--primary);
     border: 2px solid black;
 }
 
-.skills-table tbody tr:nth-child(odd) {
+.table-container tbody tr:nth-child(odd) {
     background-color: var(--primary-dark);
 }
 
-.skills-table tbody tr:hover {
+.table-container tbody tr:hover {
     background-color: #f3c4c4;
 }

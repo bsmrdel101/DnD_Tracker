@@ -29,9 +29,23 @@ function Nav() {
             </Link>
 
             {user.selected_character &&
-              <Link className="navLink" to="/actions">
-                Actions
-              </Link>
+              <>
+                <Link className="navLink" to="/character">
+                  Stats
+                </Link>
+
+                <Link className="navLink" to="/equipment">
+                  Equipment
+                </Link>
+
+                <Link className="navLink" to="/spells">
+                  Spells
+                </Link>
+                
+                <Link className="navLink" to="/inventory">
+                  Inventory
+                </Link>
+              </>
             }
 
             <LogOutButton className="navLink" />

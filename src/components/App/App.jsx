@@ -17,6 +17,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Character from '../Character/Character';
+import EquipmentPage from '../EquipmentPage/EquipmentPage';
 
 import './App.css';
 
@@ -42,7 +43,13 @@ function App() {
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
           <ProtectedRoute
-            // logged in shows Dashboard else shows LoginPage
+            exact
+            path="/equipment"
+          >
+            <EquipmentPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
             exact
             path="/dashboard"
           >

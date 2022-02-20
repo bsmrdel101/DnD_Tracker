@@ -21,7 +21,7 @@ function HealthManagement({ healthReducer }) {
     const [tempHealth, setTempHealth] = useState('');
 
     return (
-        <Card sx={{ backgroundColor: '#f3c6c6', marginTop: 2, borderRadius: 4 }}>
+        <Card sx={{ backgroundColor: 'var(--card)', marginTop: 2, borderRadius: 4 }}>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div" sx={{ fontSize: 30 }}>
                     <FavoriteIcon id='heart-icon' /> {healthReducer.max_health} / {healthReducer.health} 

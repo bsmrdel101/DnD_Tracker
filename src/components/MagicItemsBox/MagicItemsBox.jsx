@@ -4,15 +4,15 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-import './TraitsBox.css';
+import './MagicItemsBox.css';
 
-function TraitsBox({ character }) {
+function MagicItemsBox() {
 
     return (
         <Card sx={{ backgroundColor: 'var(--card)', borderRadius: 4, marginTop: 2 }}>
             <CardContent>
                 <Typography gutterBottom variant="h4" component="div" textAlign="center">
-                    Traits
+                    Magic Items
                 </Typography>
 
             </CardContent>
@@ -20,4 +20,4 @@ function TraitsBox({ character }) {
     );
 }
 
-export default TraitsBox;
+export default MagicItemsBox;

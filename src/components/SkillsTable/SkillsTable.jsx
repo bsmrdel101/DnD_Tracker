@@ -39,12 +39,12 @@ function SkillsTable({ skills, character }) {
     }
 
     return (
-        <Card sx={{ backgroundColor: '#f3c6c6', borderRadius: 4 }}>
+        <Card sx={{ backgroundColor: 'var(--card)', borderRadius: 4 }}>
             <CardContent>
                 <Typography gutterBottom variant="h4" component="div" textAlign="center">
                     Skills
                 </Typography>
-                <section className='skills-table'>
+                <section className='table-container'>
                     <table className='table'>
                         <thead>
                             <tr>
