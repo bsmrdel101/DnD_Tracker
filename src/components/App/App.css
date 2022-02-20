@@ -28,6 +28,10 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+input::placeholder, textarea::placeholder {
+  color: white;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
