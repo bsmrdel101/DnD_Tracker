@@ -46,14 +46,38 @@ function AddWeaponModal() {
     const [proficiency, setProficiency] = useState('');
     const [property, setProperty] = useState('');
     const [toHit, setToHit] = useState(0);
-    const [weight, setWeight] = useState('');
-    const [quantity, setQuantity] = useState('');
-    const [price, setPrice] = useState('');
+    const [weight, setWeight] = useState(1);
+    const [quantity, setQuantity] = useState(1);
+    const [price, setPrice] = useState(0);
     const [currency, setCurrency] = useState(4);
     const [description, setDescription] = useState('');
 
     const handleClose = () => {
         setAddWeapon(false);
+    }
+
+    // Takes all of the inputs and posts a new weapon to the database
+    const handleAddWeapon = () => {
+        dispatch({
+            type: 'ADD_WEAPON',
+            payload: {
+                name: name,
+                type: type,
+                range: range,
+                damage: damage,
+                handedness: handedness,
+                damageType: damageType,
+                magicalMod: magicalMod,
+                proficiency: proficiency,
+                property: property,
+                toHit: toHit,
+                weight: weight,
+                quantity: quantity,
+                price: price,
+                currency: currency,
+                description: description
+            }    
+        });
     }
 
     return (
@@ -68,7 +92,7 @@ function AddWeaponModal() {
                         <center>
                             <h2>New Weapon</h2>
                         </center>
-                        <form>
+                        <form onSubmit={handleAddWeapon}>
                             <section className='modal-input-container'>
                                 <div className='label-input'>
                                     <label>Name</label>
@@ -204,7 +228,7 @@ function AddWeaponModal() {
                                     onChange={(e) => setDescription(e.target.value)}
                                 />
                                 <br/>
-                                <button className='modal-btn'>Submit</button>
+                                <button className='modal-btn' type='submit'>Submit</button>
                             </center>
                         </form>
                     </Box>
