@@ -7,3 +7,57 @@
     color: var(--background-color-secondary);
     text-decoration: underline;
 }
+
+/* Modal */
+.modal-input-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.label-input {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.label-input label {
+    font-weight: bold;
+    padding-bottom: 5px;
+    padding-left: 3px;
+    font-size: 17px;
+}
+
+.label-input input {
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 6px 3px -2px rgba(0, 0, 0, 0.301);
+    transition: ease 0.3s;
+}
+
+.label-input input:hover {
+    transform: scale(1.05, 1.05);
+}
+
+.modal-description {
+    margin-top: 30px;
+    resize: none;
+}
+
+.modal-btn {
+    border: none;
+    margin-top: 5px;
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: 0 6px 3px -2px rgba(0, 0, 0, 0.301);
+    color: white;
+    background-color: var(--deep-blue);
+    cursor: pointer;
+    transition: ease 0.3s;
+}
+
+.modal-btn:hover {
+    transform: scale(1.05, 1.05);
+    box-shadow: 0 6px 3px -2px rgba(77, 132, 233, 0.301);
+}
