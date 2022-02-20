@@ -178,7 +178,14 @@ function AddWeaponModal() {
                                             onChange={(e) => setPrice(e.target.value)}
                                             type='number'
                                         />
-                                        <select></select>
+                                        <select className='modal-dropdown'>
+                                            <option value={0} disabled>Currency</option>
+                                            <option value={1}>GP</option>
+                                            <option value={2}>CP</option>
+                                            <option value={3}>SP</option>
+                                            <option value={4}>EP</option>
+                                            <option value={5}>PP</option>
+                                        </select>
                                     </div>
                                 </div>
                             </section>
