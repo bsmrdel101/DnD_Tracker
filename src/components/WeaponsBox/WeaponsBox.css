@@ -117,3 +117,24 @@
     margin-left: 3px;
     box-shadow: 0 6px 3px -2px rgba(0, 0, 0, 0.301);
 }
+
+/* Weapon details */
+.weapon-details-container {
+    background-color: var(--primary);
+    padding: 5px 10px;
+}
+
+.weapons-details {
+    display: flex;
+    gap: 40px;
+}
+
+.back-text {
+    display: inline-block;
+    padding-left: 2px;
+}
+
+.back-text:hover {
+    cursor: pointer;
+    color: rgb(107, 107, 107);
+}

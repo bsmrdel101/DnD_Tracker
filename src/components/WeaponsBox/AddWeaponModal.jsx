@@ -31,7 +31,7 @@ function AddWeaponModal() {
     // Input values for new weapon
     const [name, setName] = useState('');
     const [type, setType] = useState('');
-    const [range, setRange] = useState('');
+    const [range, setRange] = useState('0');
     const [damage, setDamage] = useState('');
     const [handedness, setHandedness] = useState('');
     const [damageType, setDamageType] = useState('');
