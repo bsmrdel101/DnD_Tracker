@@ -140,3 +140,8 @@
     cursor: pointer;
     color: rgb(107, 107, 107);
 }
+
+.weapon-details-btn-container {
+    display: flex;
+    width: 100%;
+}

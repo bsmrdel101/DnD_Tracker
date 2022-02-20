@@ -5,6 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import { IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+
 import './WeaponsBox.css';
 import AddWeaponModal from './AddWeaponModal';
 
@@ -36,7 +40,15 @@ function WeaponsBox() {
                                 {selectedWeapon.map((weapon) => {
                                     return (
                                         <>
-                                            <h3>{weapon.name}</h3>
+                                            <div className='weapon-details-btn-container'>
+                                                <h3>{weapon.name}</h3>
+                                                <IconButton sx={{ marginLeft: 1 }}>
+                                                    <EditIcon />
+                                                </IconButton>
+                                                <IconButton>
+                                                    <DeleteIcon />
+                                                </IconButton>
+                                            </div>
                                             <div className='weapons-details'>
                                                 <div className='weapons-details-col'>
                                                     <Typography><span className='bold-text'>Type: </span>{weapon.type}</Typography>
