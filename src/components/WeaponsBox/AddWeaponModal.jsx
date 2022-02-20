@@ -23,17 +23,10 @@ const style = {
 
 function AddWeaponModal() {
     const dispatch = useDispatch();
-    const weapons = useSelector(store => store.weaponsReducer);
 
     const [addWeapon, setAddWeapon] = useState(false);
     const [addMagicItem, setAddMagicItem] = useState(false);
     const [addArmor, setAddArmor] = useState(false);
-
-    useEffect(() => {
-        dispatch({
-            type: 'FETCH_WEAPONS'
-        });
-    }, [])
 
     // Input values for new weapon
     const [name, setName] = useState('');
@@ -66,11 +59,11 @@ function AddWeaponModal() {
                 range: range,
                 damage: damage,
                 handedness: handedness,
-                damageType: damageType,
-                magicalMod: magicalMod,
+                damage_type: damageType,
+                magical_modifier: magicalMod,
                 proficiency: proficiency,
                 property: property,
-                toHit: toHit,
+                to_hit: toHit,
                 weight: weight,
                 quantity: quantity,
                 price: price,
@@ -78,6 +71,22 @@ function AddWeaponModal() {
                 description: description
             }    
         });
+        setName('');
+        setType('');
+        setRange('');
+        setDamage('');
+        setHandedness('');
+        setDamageType('');
+        setMagicalMod(0);
+        setProficiency('');
+        setProperty('');
+        setToHit(0);
+        setWeight(1);
+        setQuantity(1);
+        setPrice(0);
+        setCurrency(4);
+        setDescription('');
+        setAddWeapon(false);
     }
 
     return (

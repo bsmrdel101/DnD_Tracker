@@ -13,7 +13,7 @@ router.get('/weapons/:id', rejectUnauthenticated, (req, res) => {
     const sqlText = 
     `
         SELECT * FROM "weapons"
-        WHERE "id" = $1;
+        WHERE "character_id" = $1;
     `;
     const sqlValues = [
         req.params.id
@@ -28,6 +28,7 @@ router.get('/weapons/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.post('/weapons/:id', rejectUnauthenticated, (req, res) => {
+    console.log(req.params.id);
     const sqlText = 
     `
         INSERT INTO "weapons" 
@@ -45,8 +46,9 @@ router.post('/weapons/:id', rejectUnauthenticated, (req, res) => {
         "quantity",
         "price",
         "currency",
-        "description")
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15);
+        "description",
+        "character_id")
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16);
     `;
     const sqlValues = [
         req.body.name,
@@ -55,7 +57,7 @@ router.post('/weapons/:id', rejectUnauthenticated, (req, res) => {
         req.body.damage,
         req.body.handedness,
         req.body.damage_type,
-        req.body.magical_mod,
+        req.body.magical_modifier,
         req.body.proficiency,
         req.body.property,
         req.body.to_hit,
@@ -63,7 +65,8 @@ router.post('/weapons/:id', rejectUnauthenticated, (req, res) => {
         req.body.quantity,
         req.body.price,
         req.body.currency,
-        req.body.description
+        req.body.description,
+        req.params.id
     ];
     
     pool.query(sqlText, sqlValues)

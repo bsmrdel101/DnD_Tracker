@@ -26,7 +26,6 @@ function* fetchWeapons(action) {
 // Adds a new weapon to the table
 function* addWeapon(action) {
     try {
-        console.log(action.payload);
         const responseId = yield axios ({
             method: 'GET',
             url: '/api/stats/selectedCharacterId'

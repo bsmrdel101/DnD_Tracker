@@ -1,5 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -9,6 +10,15 @@ import './WeaponsBox.css';
 import AddWeaponModal from './AddWeaponModal';
 
 function WeaponsBox() {
+    const dispatch = useDispatch();
+    const weapons = useSelector(store => store.weaponsReducer);
+
+    useEffect(() => {
+        dispatch({
+            type: 'FETCH_WEAPONS'
+        });
+    }, [])
+
     return (
         <Card sx={{ backgroundColor: 'var(--card)', borderRadius: 4 }}>
             <CardContent>
@@ -28,7 +38,17 @@ function WeaponsBox() {
                             </tr>
                         </thead>
                         <tbody>
-
+                            {weapons.map((weapon) => {
+                                return (
+                                    <tr key={weapon.id}>
+                                        <td>{weapon.name}</td>
+                                        <td>{weapon.to_hit}</td>
+                                        <td>{weapon.damage}</td>
+                                        <td>{weapon.range}</td>
+                                        <td>{weapon.property}</td>
+                                    </tr>
+                                );
+                            })}
                         </tbody>
                     </table>
                 </section>

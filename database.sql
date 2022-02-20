@@ -64,7 +64,8 @@ CREATE TABLE "weapons" (
     "quantity" INTEGER,
     "price" INTEGER,
     "currency" TEXT,
-    "description" TEXT
+    "description" TEXT,
+    "character_id" integer REFERENCES "character_stats"(id)
 );
 
 
