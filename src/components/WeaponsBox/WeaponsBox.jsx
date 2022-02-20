@@ -5,9 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { ListItemIcon } from '@mui/material';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-
 import './WeaponsBox.css';
 import AddWeaponModal from './AddWeaponModal';
 
@@ -22,6 +19,10 @@ function WeaponsBox() {
             type: 'FETCH_WEAPONS'
         });
     }, [])
+
+    const currencyType = (currency) => {
+        currency === 4 && <p>GP</p>
+    }
 
     return (
         <Card sx={{ backgroundColor: 'var(--card)', borderRadius: 4 }}>
@@ -56,7 +57,7 @@ function WeaponsBox() {
                                                 </div>
                                                 <div className='weapons-details-col'>
                                                     <Typography><span className='bold-text'>Quantity: </span>{weapon.quantity}</Typography>
-                                                    <Typography><span className='bold-text'>Price: </span>{weapon.price}</Typography>
+                                                    <Typography><span className='bold-text'>Price: </span>{weapon.price} {weapon.currency}</Typography>
                                                 </div>
                                             </div>
                                             <br/>
