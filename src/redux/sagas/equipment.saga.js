@@ -42,12 +42,30 @@ function* addWeapon(action) {
     } catch (error) {
         console.log('Error:', error);
     }
-  }
+}
+
+// Retrieves the selected weapon on the table
+function* fetchSelectedWeapon(action) {
+    try {
+        const response = yield axios ({
+            method: 'GET',
+            url: `/api/equipment/select/${action.payload}`
+        });
+        
+        yield put({
+            type: 'SET_SELECTED_WEAPON',
+            payload: response.data
+        });
+    } catch (error) {
+        console.log('Error:', error);
+    }
+}
 
 
 function* equipmentSaga() {
   yield takeLatest('FETCH_WEAPONS', fetchWeapons);
   yield takeLatest('ADD_WEAPON', addWeapon);
+  yield takeLatest('FETCH_SELECTED_WEAPON', fetchSelectedWeapon);
 }
 
 export default equipmentSaga;

@@ -11,6 +11,7 @@ import AddWeaponModal from './AddWeaponModal';
 function WeaponsBox() {
     const dispatch = useDispatch();
     const weapons = useSelector(store => store.weaponsReducer);
+    const selectedWeapon = useSelector(store => store.selectedWeapon);
 
     const [showWeaponDetails, setShowWeaponDetails] = useState(false);
 
@@ -19,10 +20,6 @@ function WeaponsBox() {
             type: 'FETCH_WEAPONS'
         });
     }, [])
-
-    const currencyType = (currency) => {
-        currency === 4 && <p>GP</p>
-    }
 
     return (
         <Card sx={{ backgroundColor: 'var(--card)', borderRadius: 4 }}>
@@ -36,7 +33,7 @@ function WeaponsBox() {
                         <>
                             <p className='back-text' onClick={() => setShowWeaponDetails(false)}>&#10094; Back</p>
                             <div className='weapon-details-container'>
-                                {weapons.map((weapon) => {
+                                {selectedWeapon.map((weapon) => {
                                     return (
                                         <>
                                             <h3>{weapon.name}</h3>
@@ -83,7 +80,10 @@ function WeaponsBox() {
                             <tbody>
                                 {weapons.map((weapon) => {
                                     return (
-                                        <tr key={weapon.id} onClick={() => setShowWeaponDetails(true)}>
+                                        <tr key={weapon.id} onClick={() => {
+                                            dispatch({ type: 'FETCH_SELECTED_WEAPON', payload: weapon.id });
+                                            setShowWeaponDetails(true);
+                                        }}>
                                             <td>{weapon.name}</td>
                                             <td>+{weapon.to_hit}</td>
                                             <td>{weapon.damage}</td>

@@ -27,6 +27,24 @@ router.get('/weapons/:id', rejectUnauthenticated, (req, res) => {
     })  
 });
 
+router.get('/select/:id', rejectUnauthenticated, (req, res) => {
+    const sqlText = 
+    `
+        SELECT * FROM "weapons"
+        WHERE "id" = $1;
+    `;
+    const sqlValues = [
+        req.params.id
+    ];
+    
+    pool.query(sqlText, sqlValues)
+        .then((dbres) => res.send(dbres.rows))
+        .catch((dberror) => {
+        console.log('Oops you messed up DB error', dberror);
+        res.sendStatus(500)
+    })  
+});
+
 router.post('/weapons/:id', rejectUnauthenticated, (req, res) => {
     console.log(req.params.id);
     const sqlText = 
