@@ -121,8 +121,8 @@ function AddWeaponModal() {
                                     <label>Magical Modifier</label>
                                     <input 
                                         placeholder='Magical Modifier'
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
+                                        value={magicalMod}
+                                        onChange={(e) => setMagicalMod(e.target.value)}
                                         type='number'
                                     />
                                 </div>
@@ -169,14 +169,17 @@ function AddWeaponModal() {
                                         type='number'
                                     />
                                 </div>
-                                <div className='label-input'>
+                                <div className='label-input-dropdown-container'>
                                     <label>Price</label>
-                                    <input
-                                        placeholder='5'
-                                        value={price}
-                                        onChange={(e) => setPrice(e.target.value)}
-                                        type='number'
-                                    />
+                                    <div className='label-input-dropdown'>
+                                        <input
+                                            placeholder='5'
+                                            value={price}
+                                            onChange={(e) => setPrice(e.target.value)}
+                                            type='number'
+                                        />
+                                        <select></select>
+                                    </div>
                                 </div>
                             </section>
                             <center>
@@ -185,6 +188,8 @@ function AddWeaponModal() {
                                     cols={50} 
                                     rows={6}
                                     placeholder='Description'
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
                                 />
                                 <br/>
                                 <button className='modal-btn'>Submit</button>
