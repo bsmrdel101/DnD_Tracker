@@ -38,7 +38,7 @@ function AddWeaponModal() {
     // Input values for new weapon
     const [name, setName] = useState('');
     const [type, setType] = useState('');
-    const [range, setRange] = useState(0);
+    const [range, setRange] = useState('');
     const [damage, setDamage] = useState('');
     const [handedness, setHandedness] = useState('');
     const [damageType, setDamageType] = useState('');
@@ -46,9 +46,10 @@ function AddWeaponModal() {
     const [proficiency, setProficiency] = useState('');
     const [property, setProperty] = useState('');
     const [toHit, setToHit] = useState(0);
-    const [weight, setWeight] = useState(0);
-    const [quantity, setQuantity] = useState(0);
-    const [price, setPrice] = useState(1);
+    const [weight, setWeight] = useState('');
+    const [quantity, setQuantity] = useState('');
+    const [price, setPrice] = useState('');
+    const [currency, setCurrency] = useState(4);
     const [description, setDescription] = useState('');
 
     const handleClose = () => {
@@ -178,12 +179,16 @@ function AddWeaponModal() {
                                             onChange={(e) => setPrice(e.target.value)}
                                             type='number'
                                         />
-                                        <select className='modal-dropdown'>
+                                        <select 
+                                            className='modal-dropdown' 
+                                            onChange={(e) => setCurrency(e.target.value)}
+                                            value={currency}
+                                        >
                                             <option value={0} disabled>Currency</option>
-                                            <option value={1}>GP</option>
-                                            <option value={2}>CP</option>
-                                            <option value={3}>SP</option>
-                                            <option value={4}>EP</option>
+                                            <option value={1}>CP</option>
+                                            <option value={2}>SP</option>
+                                            <option value={3}>EP</option>
+                                            <option value={4}>GP</option>
                                             <option value={5}>PP</option>
                                         </select>
                                     </div>
