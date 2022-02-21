@@ -25,6 +25,14 @@ function WeaponsBox() {
         });
     }, [])
 
+    const handleDeleteWeapon = (weapon) => {
+        dispatch({ 
+            type: 'DELETE_WEAPON', 
+            payload: weapon
+        });
+        setShowWeaponDetails(false);
+    }
+
     return (
         <Card sx={{ backgroundColor: 'var(--card)', borderRadius: 4 }}>
             <CardContent>
@@ -45,7 +53,7 @@ function WeaponsBox() {
                                                 <IconButton sx={{ marginLeft: 1 }}>
                                                     <EditIcon />
                                                 </IconButton>
-                                                <IconButton>
+                                                <IconButton onClick={() => handleDeleteWeapon(weapon.id)}>
                                                     <DeleteIcon />
                                                 </IconButton>
                                             </div>

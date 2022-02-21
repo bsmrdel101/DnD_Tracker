@@ -46,7 +46,6 @@ router.get('/select/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.post('/weapons/:id', rejectUnauthenticated, (req, res) => {
-    console.log(req.params.id);
     const sqlText = 
     `
         INSERT INTO "weapons" 
@@ -94,5 +93,24 @@ router.post('/weapons/:id', rejectUnauthenticated, (req, res) => {
         res.sendStatus(500)
     })  
 });
+
+router.delete('/weapons/:id', rejectUnauthenticated, (req, res) => {
+    const sqlText = 
+    `
+        DELETE FROM "weapons"
+        WHERE "id" = $1;
+    `;
+    const sqlValues = [
+        req.params.id
+    ];
+    
+    pool.query(sqlText, sqlValues)
+    .then(() => res.sendStatus(201))
+        .catch((dberror) => {
+        console.log('Oops you messed up DB error', dberror);
+        res.sendStatus(500)
+    })  
+});
+
 
 module.exports = router;

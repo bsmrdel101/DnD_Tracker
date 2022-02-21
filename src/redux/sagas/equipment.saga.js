@@ -61,11 +61,28 @@ function* fetchSelectedWeapon(action) {
     }
 }
 
+// Deletes a weapon
+function* deleteWeapon(action) {
+    try {
+        yield axios ({
+            method: 'DELETE',
+            url: `/api/equipment/weapons/${action.payload}`
+        });
+        
+        yield put({
+            type: 'FETCH_WEAPONS'
+        });
+    } catch (error) {
+        console.log('Error:', error);
+    }
+}
+
 
 function* equipmentSaga() {
   yield takeLatest('FETCH_WEAPONS', fetchWeapons);
   yield takeLatest('ADD_WEAPON', addWeapon);
   yield takeLatest('FETCH_SELECTED_WEAPON', fetchSelectedWeapon);
+  yield takeLatest('DELETE_WEAPON', deleteWeapon);
 }
 
 export default equipmentSaga;
