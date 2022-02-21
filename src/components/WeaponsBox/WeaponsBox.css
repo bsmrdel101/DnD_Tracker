@@ -122,6 +122,8 @@
 .weapon-details-container {
     background-color: var(--primary);
     padding: 5px 10px;
+    border-radius: 10px;
+    box-shadow: 0 6px 3px -2px rgba(0, 0, 0, 0.301);
 }
 
 .weapons-details {
@@ -137,4 +139,17 @@
 .back-text:hover {
     cursor: pointer;
     color: rgb(107, 107, 107);
+}
+
+.weapon-details-btn-container {
+    display: flex;
+    width: 100%;
+}
+
+.edit-weapon-input {
+    border: none;
+    background-color: var(--light-pink);
+    border-radius: 5px;
+    padding-left: 3px;
+    max-width: 80px;
 }

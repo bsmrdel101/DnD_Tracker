@@ -25,8 +25,6 @@ function AddWeaponModal() {
     const dispatch = useDispatch();
 
     const [addWeapon, setAddWeapon] = useState(false);
-    const [addMagicItem, setAddMagicItem] = useState(false);
-    const [addArmor, setAddArmor] = useState(false);
 
     // Input values for new weapon
     const [name, setName] = useState('');
@@ -42,7 +40,7 @@ function AddWeaponModal() {
     const [weight, setWeight] = useState(1);
     const [quantity, setQuantity] = useState(1);
     const [price, setPrice] = useState(0);
-    const [currency, setCurrency] = useState(4);
+    const [currency, setCurrency] = useState('GP');
     const [description, setDescription] = useState('');
 
     const handleClose = () => {
@@ -218,11 +216,11 @@ function AddWeaponModal() {
                                             value={currency}
                                         >
                                             <option value={0} disabled>Currency</option>
-                                            <option value={1}>CP</option>
-                                            <option value={2}>SP</option>
-                                            <option value={3}>EP</option>
-                                            <option value={4}>GP</option>
-                                            <option value={5}>PP</option>
+                                            <option value={'CP'}>CP</option>
+                                            <option value={'SP'}>SP</option>
+                                            <option value={'EP'}>EP</option>
+                                            <option value={'GP'}>GP</option>
+                                            <option value={'PP'}>PP</option>
                                         </select>
                                     </div>
                                 </div>
