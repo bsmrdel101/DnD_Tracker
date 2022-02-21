@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 function LogOutButton(props) {
   const dispatch = useDispatch();
@@ -10,8 +11,9 @@ function LogOutButton(props) {
       // is passed to it from it's parents through React props
       className={props.className}
       onClick={() => dispatch({ type: 'LOGOUT' })}
+      id='logout-btn'
     >
-      Log Out
+      <LogoutIcon sx={{ fontSize: '18px' }} />
     </button>
   );
 }

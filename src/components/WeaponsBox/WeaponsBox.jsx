@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2'
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -64,11 +65,40 @@ function WeaponsBox() {
     }
 
     const handleDeleteWeapon = (weapon) => {
-        dispatch({ 
-            type: 'DELETE_WEAPON', 
-            payload: weapon
-        });
-        setShowWeaponDetails(false);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch({ 
+                    type: 'DELETE_WEAPON', 
+                    payload: weapon.id
+                });
+                setShowWeaponDetails(false);
+                // Mixin alert
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                
+                Toast.fire({
+                    icon: 'success',
+                    title: `Deleted ${weapon.name}`
+                })
+            }
+        })
     }
 
     const handleCancelWeaponEdit = () => {
@@ -149,7 +179,7 @@ function WeaponsBox() {
                                                     <IconButton sx={{ marginLeft: 1 }} onClick={() => setEditWeapon(true)}>
                                                         <EditIcon />
                                                     </IconButton>
-                                                    <IconButton onClick={() => handleDeleteWeapon(weapon.id)}>
+                                                    <IconButton onClick={() => handleDeleteWeapon(weapon)}>
                                                         <DeleteIcon />
                                                     </IconButton>
                                                 </div>
