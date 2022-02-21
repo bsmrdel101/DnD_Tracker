@@ -76,8 +76,30 @@ function WeaponsBox() {
         resetInputs();
     }
 
-    const handleEditWeapon = () => {
+    const handleEditWeapon = (id) => {
+        dispatch({
+            type: 'EDIT_WEAPON',
+            payload: {
+                id: id,
+                name: name,
+                type: type,
+                range: range,
+                damage: damage,
+                handedness: handedness,
+                damage_type: damageType,
+                magical_modifier: magicalMod,
+                proficiency: proficiency,
+                property: property,
+                to_hit: toHit,
+                weight: weight,
+                quantity: quantity,
+                price: price,
+                currency: currency,
+                description: description
+            }
+        });
         setEditWeapon(false);
+        setShowWeaponDetails(false);
         resetInputs();
     }
 
@@ -168,7 +190,7 @@ function WeaponsBox() {
                                                         onChange={(e) => setName(e.target.value)}
                                                         className='edit-weapon-input'
                                                     />
-                                                    <IconButton sx={{ marginLeft: 1 }} onClick={handleEditWeapon}>
+                                                    <IconButton sx={{ marginLeft: 1 }} onClick={() => handleEditWeapon(weapon.id)}>
                                                         <CheckIcon />
                                                     </IconButton>
                                                     <IconButton onClick={handleCancelWeaponEdit}>
@@ -180,35 +202,35 @@ function WeaponsBox() {
                                                         <Typography><span className='bold-text'>Type: </span>
                                                             <input
                                                                 value={type}
-                                                                onChange={(e) => setName(e.target.value)}
+                                                                onChange={(e) => setType(e.target.value)}
                                                                 className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                         <Typography><span className='bold-text'>Range: </span>
                                                             <input 
                                                                 value={range}
-                                                                onChange={(e) => setName(e.target.value)}
+                                                                onChange={(e) => setRange(e.target.value)}
                                                                 className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                         <Typography><span className='bold-text'>Damage: </span>
                                                             <input 
                                                                 value={damage}
-                                                                onChange={(e) => setName(e.target.value)}
+                                                                onChange={(e) => setDamage(e.target.value)}
                                                                 className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                         <Typography><span className='bold-text'>Handedness: </span>
                                                             <input 
                                                                 value={handedness}
-                                                                onChange={(e) => setName(e.target.value)}
+                                                                onChange={(e) => setHandedness(e.target.value)}
                                                                 className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                         <Typography><span className='bold-text'>Damage Type: </span>
                                                             <input 
                                                                 value={damageType}
-                                                                onChange={(e) => setName(e.target.value)}
+                                                                onChange={(e) => setDamageType(e.target.value)}
                                                                 className='edit-weapon-input'
                                                             />
                                                         </Typography>
@@ -217,35 +239,35 @@ function WeaponsBox() {
                                                         <Typography><span className='bold-text'>Magical Modifier: </span>
                                                             <input 
                                                                 value={magicalMod}
-                                                                onChange={(e) => setName(e.target.value)}
+                                                                onChange={(e) => setMagicalMod(e.target.value)}
                                                                 className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                         <Typography><span className='bold-text'>Proficiency: </span>
                                                             <input 
                                                                 value={proficiency}
-                                                                onChange={(e) => setName(e.target.value)}
+                                                                onChange={(e) => setProficiency(e.target.value)}
                                                                 className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                         <Typography><span className='bold-text'>Property: </span>
                                                             <input 
                                                                 value={property}
-                                                                onChange={(e) => setName(e.target.value)}
+                                                                onChange={(e) => setProperty(e.target.value)}
                                                                 className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                         <Typography><span className='bold-text'>To Hit: </span>
                                                             <input 
                                                                 value={toHit}
-                                                                onChange={(e) => setName(e.target.value)}
+                                                                onChange={(e) => setToHit(e.target.value)}
                                                                 className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                         <Typography><span className='bold-text'>Weight: </span>
                                                             <input 
                                                                 value={weight}
-                                                                onChange={(e) => setName(e.target.value)}
+                                                                onChange={(e) => setWeight(e.target.value)}
                                                                 className='edit-weapon-input'
                                                             />
                                                         </Typography>
@@ -254,14 +276,14 @@ function WeaponsBox() {
                                                         <Typography><span className='bold-text'>Quantity: </span>
                                                             <input 
                                                                 value={quantity}
-                                                                onChange={(e) => setName(e.target.value)}
+                                                                onChange={(e) => setQuantity(e.target.value)}
                                                                 className='edit-weapon-input'
                                                             />  
                                                         </Typography>
                                                         <Typography><span className='bold-text'>Price: </span>
                                                             <input 
                                                                 value={price}
-                                                                onChange={(e) => setName(e.target.value)}
+                                                                onChange={(e) => setPrice(e.target.value)}
                                                                 className='edit-weapon-input'
                                                             />
                                                         </Typography>
