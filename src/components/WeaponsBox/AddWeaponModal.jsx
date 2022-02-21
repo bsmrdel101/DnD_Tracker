@@ -29,17 +29,17 @@ function AddWeaponModal() {
     // Input values for new weapon
     const [name, setName] = useState('');
     const [type, setType] = useState('');
-    const [range, setRange] = useState('0');
+    const [range, setRange] = useState('');
     const [damage, setDamage] = useState('');
     const [handedness, setHandedness] = useState('');
     const [damageType, setDamageType] = useState('');
-    const [magicalMod, setMagicalMod] = useState(0);
+    const [magicalMod, setMagicalMod] = useState('');
     const [proficiency, setProficiency] = useState('');
     const [property, setProperty] = useState('');
-    const [toHit, setToHit] = useState(0);
-    const [weight, setWeight] = useState(1);
-    const [quantity, setQuantity] = useState(1);
-    const [price, setPrice] = useState(0);
+    const [toHit, setToHit] = useState('');
+    const [weight, setWeight] = useState('');
+    const [quantity, setQuantity] = useState('');
+    const [price, setPrice] = useState('');
     const [currency, setCurrency] = useState('GP');
     const [description, setDescription] = useState('');
 
@@ -58,13 +58,13 @@ function AddWeaponModal() {
                 damage: damage,
                 handedness: handedness,
                 damage_type: damageType,
-                magical_modifier: magicalMod,
+                magical_modifier: Number(magicalMod),
                 proficiency: proficiency,
                 property: property,
-                to_hit: toHit,
-                weight: weight,
-                quantity: quantity,
-                price: price,
+                to_hit: Number(toHit),
+                weight: Number(weight),
+                quantity: Number(quantity),
+                price: Number(price),
                 currency: currency,
                 description: description
             }    
@@ -75,14 +75,14 @@ function AddWeaponModal() {
         setDamage('');
         setHandedness('');
         setDamageType('');
-        setMagicalMod(0);
+        setMagicalMod('');
         setProficiency('');
         setProperty('');
-        setToHit(0);
-        setWeight(1);
-        setQuantity(1);
-        setPrice(0);
-        setCurrency(4);
+        setToHit('');
+        setWeight('');
+        setQuantity('');
+        setPrice('');
+        setCurrency('');
         setDescription('');
         setAddWeapon(false);
     }
