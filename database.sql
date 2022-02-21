@@ -56,7 +56,7 @@ CREATE TABLE "weapons" (
     "damage" TEXT,
     "handedness" TEXT,
     "damage_type" TEXT,
-    "magical_modifier" INTEGER,
+    "damage_modifier" INTEGER,
     "proficiency" TEXT,
     "property" TEXT,
     "to_hit" INTEGER,

@@ -55,7 +55,7 @@ router.post('/weapons/:id', rejectUnauthenticated, (req, res) => {
         "damage",
         "handedness",
         "damage_type",
-        "magical_modifier",
+        "damage_modifier",
         "proficiency",
         "property",
         "to_hit",
@@ -74,7 +74,7 @@ router.post('/weapons/:id', rejectUnauthenticated, (req, res) => {
         req.body.damage,
         req.body.handedness,
         req.body.damage_type,
-        req.body.magical_modifier,
+        req.body.damage_modifier,
         req.body.proficiency,
         req.body.property,
         req.body.to_hit,
@@ -116,7 +116,7 @@ router.put('/weapons/:id', rejectUnauthenticated, (req, res) => {
     const sqlText = 
     `
         UPDATE "weapons"
-        SET "name"=$1,"type"=$2,"range"=$3,"damage"=$4,"handedness"=$5,"damage_type"=$6,"magical_modifier"=$7,"proficiency"=$8,"property"=$9,"to_hit"=$10,"weight"=$11,"quantity"=$12,"price"=$13,"currency"=$14,"description"=$15
+        SET "name"=$1,"type"=$2,"range"=$3,"damage"=$4,"handedness"=$5,"damage_type"=$6,"damage_modifier"=$7,"proficiency"=$8,"property"=$9,"to_hit"=$10,"weight"=$11,"quantity"=$12,"price"=$13,"currency"=$14,"description"=$15
         WHERE "id" = $16
     `;
     const sqlValues = [
@@ -126,7 +126,7 @@ router.put('/weapons/:id', rejectUnauthenticated, (req, res) => {
         req.body.damage,
         req.body.handedness,
         req.body.damage_type,
-        req.body.magical_modifier,
+        req.body.damage_modifier,
         req.body.proficiency,
         req.body.property,
         req.body.to_hit,

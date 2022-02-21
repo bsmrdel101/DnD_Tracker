@@ -58,7 +58,7 @@ function AddWeaponModal() {
                 damage: damage,
                 handedness: handedness,
                 damage_type: damageType,
-                magical_modifier: Number(magicalMod),
+                damage_modifier: Number(magicalMod),
                 proficiency: proficiency,
                 property: property,
                 to_hit: Number(toHit),
@@ -150,7 +150,7 @@ function AddWeaponModal() {
                                     />
                                 </div>
                                 <div className='label-input'>
-                                    <label>Magical Modifier</label>
+                                    <label>Damage Modifier</label>
                                     <input 
                                         placeholder='0'
                                         value={magicalMod}
