@@ -25,25 +25,25 @@ function Nav() {
         {user.id && (
           <>
             <Link className="navLink" to="/dashboard">
-              Dashboard
+              <img src='dashboard.png' className='nav-icon' draggable={false} /> Dashboard
             </Link>
 
             {user.selected_character &&
               <>
                 <Link className="navLink" to="/character">
-                  Stats
+                  <img src='stats.png' className='nav-icon' draggable={false} /> Stats
                 </Link>
 
                 <Link className="navLink" to="/equipment">
-                  Equipment
+                  <img src='equipment.png' className='nav-icon' draggable={false} /> Equipment
                 </Link>
 
                 <Link className="navLink" to="/spells">
-                  Spells
+                  <img src='spells.png' className='nav-icon' draggable={false} /> Spells
                 </Link>
                 
                 <Link className="navLink" to="/inventory">
-                  Inventory
+                  <img src='inventory.png' className='nav-icon' draggable={false} /> Inventory
                 </Link>
               </>
             }
