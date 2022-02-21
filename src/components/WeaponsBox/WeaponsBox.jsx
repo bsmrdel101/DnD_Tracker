@@ -109,6 +109,7 @@ function WeaponsBox() {
             payload: weapon.id 
         });
         setShowWeaponDetails(true);
+        setEditWeapon(false);
         // Initialize edit values
         setName(weapon.name);
         setType(weapon.type);
