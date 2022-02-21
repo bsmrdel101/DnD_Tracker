@@ -300,7 +300,7 @@ function WeaponsBox() {
                             }
                         </>
                     :
-                        <table className='table'>
+                        <table className='table table-dark-rows'>
                             <thead>
                                 <tr>
                                     <th>Weapon</th>

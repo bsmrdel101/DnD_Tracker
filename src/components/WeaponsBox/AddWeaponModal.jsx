@@ -152,7 +152,7 @@ function AddWeaponModal() {
                                 <div className='label-input'>
                                     <label>Magical Modifier</label>
                                     <input 
-                                        placeholder='Magical Modifier'
+                                        placeholder='0'
                                         value={magicalMod}
                                         onChange={(e) => setMagicalMod(e.target.value)}
                                         type='number'
@@ -177,7 +177,7 @@ function AddWeaponModal() {
                                 <div className='label-input'>
                                     <label>To Hit Modifier</label>
                                     <input 
-                                        placeholder='To Hit Modifier'
+                                        placeholder='0'
                                         value={toHit}
                                         onChange={(e) => setToHit(e.target.value)}
                                         type='number'
