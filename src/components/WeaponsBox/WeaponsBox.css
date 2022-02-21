@@ -145,3 +145,10 @@
     display: flex;
     width: 100%;
 }
+
+.edit-weapon-input {
+    border: none;
+    background-color: var(--light-pink);
+    border-radius: 5px;
+    padding-left: 3px;
+}

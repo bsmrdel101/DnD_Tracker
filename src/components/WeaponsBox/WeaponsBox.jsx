@@ -166,6 +166,7 @@ function WeaponsBox() {
                                                     <input 
                                                         value={name}
                                                         onChange={(e) => setName(e.target.value)}
+                                                        className='edit-weapon-input'
                                                     />
                                                     <IconButton sx={{ marginLeft: 1 }} onClick={handleEditWeapon}>
                                                         <CheckIcon />
@@ -180,30 +181,35 @@ function WeaponsBox() {
                                                             <input
                                                                 value={type}
                                                                 onChange={(e) => setName(e.target.value)}
+                                                                className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                         <Typography><span className='bold-text'>Range: </span>
                                                             <input 
                                                                 value={range}
                                                                 onChange={(e) => setName(e.target.value)}
+                                                                className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                         <Typography><span className='bold-text'>Damage: </span>
                                                             <input 
                                                                 value={damage}
                                                                 onChange={(e) => setName(e.target.value)}
+                                                                className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                         <Typography><span className='bold-text'>Handedness: </span>
                                                             <input 
                                                                 value={handedness}
                                                                 onChange={(e) => setName(e.target.value)}
+                                                                className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                         <Typography><span className='bold-text'>Damage Type: </span>
                                                             <input 
                                                                 value={damageType}
                                                                 onChange={(e) => setName(e.target.value)}
+                                                                className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                     </div>
@@ -212,30 +218,35 @@ function WeaponsBox() {
                                                             <input 
                                                                 value={magicalMod}
                                                                 onChange={(e) => setName(e.target.value)}
+                                                                className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                         <Typography><span className='bold-text'>Proficiency: </span>
                                                             <input 
                                                                 value={proficiency}
                                                                 onChange={(e) => setName(e.target.value)}
+                                                                className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                         <Typography><span className='bold-text'>Property: </span>
                                                             <input 
                                                                 value={property}
                                                                 onChange={(e) => setName(e.target.value)}
+                                                                className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                         <Typography><span className='bold-text'>To Hit: </span>
                                                             <input 
                                                                 value={toHit}
                                                                 onChange={(e) => setName(e.target.value)}
+                                                                className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                         <Typography><span className='bold-text'>Weight: </span>
                                                             <input 
                                                                 value={weight}
                                                                 onChange={(e) => setName(e.target.value)}
+                                                                className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                     </div>
@@ -244,12 +255,14 @@ function WeaponsBox() {
                                                             <input 
                                                                 value={quantity}
                                                                 onChange={(e) => setName(e.target.value)}
+                                                                className='edit-weapon-input'
                                                             />  
                                                         </Typography>
                                                         <Typography><span className='bold-text'>Price: </span>
                                                             <input 
                                                                 value={price}
                                                                 onChange={(e) => setName(e.target.value)}
+                                                                className='edit-weapon-input'
                                                             />
                                                         </Typography>
                                                     </div>
