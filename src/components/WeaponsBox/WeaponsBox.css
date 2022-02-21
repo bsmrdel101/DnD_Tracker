@@ -160,5 +160,6 @@
     border-radius: 5px;
     padding-left: 3px;
     max-width: 80px;
+    box-shadow: 0 4px 3px -2px rgba(0, 0, 0, 0.301);
 }
 
