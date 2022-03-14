@@ -35,6 +35,6 @@
     background-color: #f3c4c4;
 }
 
-.table-container tbody tr:hover {
+.table-details-hover tbody tr:hover {
     cursor: context-menu;
 }

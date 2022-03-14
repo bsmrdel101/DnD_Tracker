@@ -26,7 +26,7 @@ function EquipmentPage() {
                     <div key={character.id} className='container'>
                         <Grid container spacing={4}>
                             <Grid item xs={12} sm={7}>
-                                <WeaponsBox />
+                                <WeaponsBox character={character} />
                                 <MagicItemsBox />
                             </Grid>
                             <Grid item sm={5} xs={12}>

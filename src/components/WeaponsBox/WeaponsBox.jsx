@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2'
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -14,7 +15,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import './WeaponsBox.css';
 import AddWeaponModal from './AddWeaponModal';
 
-function WeaponsBox() {
+function WeaponsBox({ character }) {
     const dispatch = useDispatch();
     const weapons = useSelector(store => store.weaponsReducer);
     const selectedWeapon = useSelector(store => store.selectedWeapon);
@@ -29,7 +30,7 @@ function WeaponsBox() {
     const [damage, setDamage] = useState('');
     const [handedness, setHandedness] = useState('');
     const [damageType, setDamageType] = useState('');
-    const [magicalMod, setMagicalMod] = useState('');
+    const [damageMod, setDamageMod] = useState('');
     const [proficiency, setProficiency] = useState('');
     const [property, setProperty] = useState('');
     const [toHit, setToHit] = useState('');
@@ -52,7 +53,7 @@ function WeaponsBox() {
         setDamage(selectedWeapon[0].damage);
         setHandedness(selectedWeapon[0].handedness);
         setDamageType(selectedWeapon[0].damage_type);
-        setMagicalMod(selectedWeapon[0].magical_modifier);
+        setDamageMod(selectedWeapon[0].damage_modifier);
         setProficiency(selectedWeapon[0].proficiency);
         setProperty(selectedWeapon[0].property);
         setToHit(selectedWeapon[0].to_hit);
@@ -64,11 +65,40 @@ function WeaponsBox() {
     }
 
     const handleDeleteWeapon = (weapon) => {
-        dispatch({ 
-            type: 'DELETE_WEAPON', 
-            payload: weapon
-        });
-        setShowWeaponDetails(false);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch({ 
+                    type: 'DELETE_WEAPON', 
+                    payload: weapon.id
+                });
+                setShowWeaponDetails(false);
+                // Mixin alert
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                
+                Toast.fire({
+                    icon: 'success',
+                    title: `Deleted ${weapon.name}`
+                })
+            }
+        })
     }
 
     const handleCancelWeaponEdit = () => {
@@ -87,7 +117,7 @@ function WeaponsBox() {
                 damage: damage,
                 handedness: handedness,
                 damage_type: damageType,
-                magical_modifier: magicalMod,
+                damage_modifier: damageMod,
                 proficiency: proficiency,
                 property: property,
                 to_hit: toHit,
@@ -117,7 +147,7 @@ function WeaponsBox() {
         setDamage(weapon.damage);
         setHandedness(weapon.handedness);
         setDamageType(weapon.damage_type);
-        setMagicalMod(weapon.magical_modifier);
+        setDamageMod(weapon.magical_modifier);
         setProficiency(weapon.proficiency);
         setProperty(weapon.property);
         setToHit(weapon.to_hit);
@@ -128,6 +158,19 @@ function WeaponsBox() {
         setDescription(weapon.description);
     }
 
+    // TODO:
+    // Get rid of damage modifier only on the add new weapon modal
+    // Keep it on the edit weapon, so the user can set their own.
+    // Make a dropdown next to the damage input thats lets you chose which stat to use for the damage modifier.
+
+    const damageModifier = (weapon) => {
+        if (weapon.damage_modifier === null) {
+            return 0;
+        } else {
+            return weapon.damage_modifier;
+        }
+    }
+
     return (
         <Card sx={{ backgroundColor: 'var(--card)', borderRadius: 4 }}>
             <CardContent>
@@ -135,7 +178,7 @@ function WeaponsBox() {
                     Weapons
                 </Typography>
 
-                <section className='table-container'>
+                <section className='table-container table-details-hover'>
                     {showWeaponDetails ?
                         <>
                             <p className='back-text' onClick={() => setShowWeaponDetails(false)}>&#10094; Back</p>
@@ -149,7 +192,7 @@ function WeaponsBox() {
                                                     <IconButton sx={{ marginLeft: 1 }} onClick={() => setEditWeapon(true)}>
                                                         <EditIcon />
                                                     </IconButton>
-                                                    <IconButton onClick={() => handleDeleteWeapon(weapon.id)}>
+                                                    <IconButton onClick={() => handleDeleteWeapon(weapon)}>
                                                         <DeleteIcon />
                                                     </IconButton>
                                                 </div>
@@ -162,7 +205,7 @@ function WeaponsBox() {
                                                         <Typography><span className='bold-text'>Damage Type: </span>{weapon.damage_type}</Typography>
                                                     </div>
                                                     <div className='weapons-details-col'>
-                                                        <Typography><span className='bold-text'>Magical Modifier: </span>{weapon.magical_modifier}</Typography>
+                                                        <Typography><span className='bold-text'>Damage Modifier: </span>{weapon.damage_modifier}</Typography>
                                                         <Typography><span className='bold-text'>Proficiency: </span>{weapon.proficiency}</Typography>
                                                         <Typography><span className='bold-text'>Property: </span>{weapon.property}</Typography>
                                                         <Typography><span className='bold-text'>To Hit: </span>{weapon.to_hit}</Typography>
@@ -239,8 +282,8 @@ function WeaponsBox() {
                                                     <div className='weapons-details-col'>
                                                         <Typography><span className='bold-text'>Magical Modifier: </span>
                                                             <input 
-                                                                value={magicalMod}
-                                                                onChange={(e) => setMagicalMod(e.target.value)}
+                                                                value={damageMod}
+                                                                onChange={(e) => setDamageMod(e.target.value)}
                                                                 className='edit-weapon-input'
                                                             />
                                                         </Typography>
@@ -317,8 +360,8 @@ function WeaponsBox() {
                                         <tr key={weapon.id} onClick={() => handleSelectedWeapon(weapon)}>
                                             <td>{weapon.name}</td>
                                             <td>+{weapon.to_hit}</td>
-                                            <td>{weapon.damage}</td>
-                                            <td>{weapon.range} ft</td>
+                                            <td>{weapon.damage}+{damageModifier(weapon)}</td>
+                                            <td>{weapon.range} feet</td>
                                             <td>{weapon.damage_type}</td>
                                             <td>{weapon.quantity}</td>
                                         </tr>
