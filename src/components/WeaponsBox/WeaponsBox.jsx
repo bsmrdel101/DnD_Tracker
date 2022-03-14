@@ -178,7 +178,7 @@ function WeaponsBox({ character }) {
                     Weapons
                 </Typography>
 
-                <section className='table-container'>
+                <section className='table-container table-details-hover'>
                     {showWeaponDetails ?
                         <>
                             <p className='back-text' onClick={() => setShowWeaponDetails(false)}>&#10094; Back</p>
