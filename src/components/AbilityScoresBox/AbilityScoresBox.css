@@ -36,3 +36,7 @@
         flex-direction: column;
     }
 }
+
+.stat-mod {
+    font-size: 14px;
+}
