@@ -10,7 +10,11 @@ function AbilityScoresBox({ character }) {
     const getModifier = (type) => {
         let baseAbility = getAbilityScore(type);
         let calculatedModifier = Math.floor((baseAbility - 10) / 2);
-        return calculatedModifier;
+        if (calculatedModifier >= 0) {
+            return `+${calculatedModifier}`;
+        } else {
+            return calculatedModifier;
+        }
     }
 
     const getAbilityScore = (type) => {
