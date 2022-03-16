@@ -44,6 +44,12 @@ function AddWeaponModal() {
     const [currency, setCurrency] = useState('GP');
     const [description, setDescription] = useState('');
 
+    useEffect(() => {
+        dispatch({
+            type: 'FETCH_EQUIPMENT'
+        });
+    }, [])
+
     const handleClose = () => {
         setAddWeapon(false);
         setSelectWeapon(false);

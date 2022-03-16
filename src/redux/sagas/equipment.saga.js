@@ -77,7 +77,7 @@ function* deleteWeapon(action) {
     }
 }
 
-// edits a weapon
+// Edits a weapon
 function* editWeapon(action) {
     try {
         yield axios ({
@@ -94,6 +94,20 @@ function* editWeapon(action) {
     }
 }
 
+// Retrieves list of all equipment
+function* fetchEquipment(action) {
+    try {
+        const response = yield axios ({
+            method: 'GET',
+            url: `https://www.dnd5eapi.co/api/equipment`
+        });
+        console.log(response.data.results);
+
+    } catch (error) {
+        console.log('Error:', error);
+    }
+}
+
 
 function* equipmentSaga() {
   yield takeLatest('FETCH_WEAPONS', fetchWeapons);
@@ -101,6 +115,7 @@ function* equipmentSaga() {
   yield takeLatest('FETCH_SELECTED_WEAPON', fetchSelectedWeapon);
   yield takeLatest('DELETE_WEAPON', deleteWeapon);
   yield takeLatest('EDIT_WEAPON', editWeapon);
+  yield takeLatest('FETCH_EQUIPMENT', fetchEquipment);
 }
 
 export default equipmentSaga;
