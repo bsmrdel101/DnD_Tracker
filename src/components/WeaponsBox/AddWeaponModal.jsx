@@ -85,11 +85,15 @@ function AddWeaponModal() {
         setCurrency('');
         setDescription('');
         setAddWeapon(false);
+        setSelectWeapon(false);
     }
 
     return (
         <center>
-            <p className='table-btn' onClick={() => setAddWeapon(true)}>Add Weapon</p>
+            <div className='weapon-controllers'>
+                <p className='table-btn' onClick={() => setSelectWeapon(true)}>Select Weapon</p>
+                <p className='table-btn' onClick={() => setAddWeapon(true)}>Create Weapon</p>
+            </div>
             <Modal
                 open={addWeapon}
                 onClose={handleClose}
