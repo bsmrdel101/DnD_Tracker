@@ -7,6 +7,7 @@ import healthReducer from './health.reducer';
 import skillsReducer from './skills.reducer';
 import weaponsReducer from './weapons.reducer';
 import selectedWeapon from './selectedWeapon.reducer';
+import equipmentReducer from './equipment.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   skillsReducer,
   weaponsReducer,
   selectedWeapon,
+  equipmentReducer,
 });
 
 export default rootReducer;

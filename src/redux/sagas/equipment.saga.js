@@ -101,7 +101,12 @@ function* fetchEquipment(action) {
             method: 'GET',
             url: `https://www.dnd5eapi.co/api/equipment`
         });
-
+        console.log(response.data.results);
+        
+        yield put ({
+            type: 'SET_EQUIPMENT',
+            payload: response.data.results
+        });
     } catch (error) {
         console.log('Error:', error);
     }

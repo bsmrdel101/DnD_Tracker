@@ -45,6 +45,8 @@ function AddWeaponModal() {
     const [currency, setCurrency] = useState('GP');
     const [description, setDescription] = useState('');
 
+    const equipmentReducer = useSelector(store => store.equipmentReducer);
+
     useEffect(() => {
         dispatch({
             type: 'FETCH_EQUIPMENT'
@@ -269,12 +271,16 @@ function AddWeaponModal() {
                         <form className='select-weapon-container'>
                             <center>
                                 <select 
-                                    className='modal-dropdown'
+                                    className='modal-dropdown select-weapon-dropdown'
                                     onChange={(e) => setSelectedWeapon(e.target.value)}
                                     value={selectedWeapon}
                                 >
                                     <option value={0} disabled>Weapons</option>
-                                    
+                                    {equipmentReducer.map((weapon, i) => {
+                                        return (
+                                            <option key={i} value={weapon.index}>{weapon.name}</option>
+                                        );
+                                    })}
                                 </select>
                                 <br />
                                 <button className='modal-btn' type='submit'>Submit</button>
