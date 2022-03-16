@@ -166,5 +166,5 @@
 .weapon-controllers {
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 15px;
 }
