@@ -25,6 +25,7 @@ function AddWeaponModal() {
     const dispatch = useDispatch();
 
     const [addWeapon, setAddWeapon] = useState(false);
+    const [selectWeapon, setSelectWeapon] = useState(false);
 
     // Input values for new weapon
     const [name, setName] = useState('');
@@ -45,6 +46,7 @@ function AddWeaponModal() {
 
     const handleClose = () => {
         setAddWeapon(false);
+        setSelectWeapon(false);
     }
 
     // Takes all of the inputs and posts a new weapon to the database
@@ -94,6 +96,7 @@ function AddWeaponModal() {
                 <p className='table-btn' onClick={() => setSelectWeapon(true)}>Select Weapon</p>
                 <p className='table-btn' onClick={() => setAddWeapon(true)}>Create Weapon</p>
             </div>
+            {/* Create Weapon */}
             <Modal
                 open={addWeapon}
                 onClose={handleClose}
@@ -239,6 +242,25 @@ function AddWeaponModal() {
                                     onChange={(e) => setDescription(e.target.value)}
                                 />
                                 <br/>
+                                <button className='modal-btn' type='submit'>Submit</button>
+                            </center>
+                        </form>
+                    </Box>
+                </div>
+            </Modal>
+
+            {/* Select Weapon */}
+            <Modal
+                open={selectWeapon}
+                onClose={handleClose}
+            >
+                <div>
+                    <Box sx={style}>
+                        <center>
+                            <h2>Select Weapon</h2>
+                        </center>
+                        <form>
+                            <center>
                                 <button className='modal-btn' type='submit'>Submit</button>
                             </center>
                         </form>
