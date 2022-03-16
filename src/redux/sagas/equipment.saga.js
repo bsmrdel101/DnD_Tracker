@@ -101,7 +101,6 @@ function* fetchEquipment(action) {
             method: 'GET',
             url: `https://www.dnd5eapi.co/api/equipment`
         });
-        console.log(response.data.results);
 
     } catch (error) {
         console.log('Error:', error);

@@ -26,6 +26,7 @@ function AddWeaponModal() {
 
     const [addWeapon, setAddWeapon] = useState(false);
     const [selectWeapon, setSelectWeapon] = useState(false);
+    const [selectedWeapon, setSelectedWeapon] = useState('');
 
     // Input values for new weapon
     const [name, setName] = useState('');
@@ -265,8 +266,17 @@ function AddWeaponModal() {
                         <center>
                             <h2>Select Weapon</h2>
                         </center>
-                        <form>
+                        <form className='select-weapon-container'>
                             <center>
+                                <select 
+                                    className='modal-dropdown'
+                                    onChange={(e) => setSelectedWeapon(e.target.value)}
+                                    value={selectedWeapon}
+                                >
+                                    <option value={0} disabled>Weapons</option>
+                                    
+                                </select>
+                                <br />
                                 <button className='modal-btn' type='submit'>Submit</button>
                             </center>
                         </form>

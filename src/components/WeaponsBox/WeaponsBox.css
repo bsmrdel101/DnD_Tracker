@@ -168,3 +168,12 @@
     justify-content: center;
     gap: 15px;
 }
+
+.select-weapon-container {
+    display: flex;
+    justify-content: center;
+}
+
+.select-weapon-container select {
+    margin-bottom: 8px;
+}
