@@ -163,3 +163,17 @@
     box-shadow: 0 4px 3px -2px rgba(0, 0, 0, 0.301);
 }
 
+.weapon-controllers {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.select-weapon-container {
+    display: flex;
+    justify-content: center;
+}
+
+.select-weapon-dropdown {
+    margin-bottom: 8px;
+}

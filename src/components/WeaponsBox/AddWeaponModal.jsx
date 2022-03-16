@@ -25,6 +25,8 @@ function AddWeaponModal() {
     const dispatch = useDispatch();
 
     const [addWeapon, setAddWeapon] = useState(false);
+    const [selectWeapon, setSelectWeapon] = useState(false);
+    const [selectedWeapon, setSelectedWeapon] = useState('');
 
     // Input values for new weapon
     const [name, setName] = useState('');
@@ -43,8 +45,17 @@ function AddWeaponModal() {
     const [currency, setCurrency] = useState('GP');
     const [description, setDescription] = useState('');
 
+    const equipmentReducer = useSelector(store => store.equipmentReducer);
+
+    useEffect(() => {
+        dispatch({
+            type: 'FETCH_EQUIPMENT'
+        });
+    }, [])
+
     const handleClose = () => {
         setAddWeapon(false);
+        setSelectWeapon(false);
     }
 
     // Takes all of the inputs and posts a new weapon to the database
@@ -85,11 +96,16 @@ function AddWeaponModal() {
         setCurrency('');
         setDescription('');
         setAddWeapon(false);
+        setSelectWeapon(false);
     }
 
     return (
         <center>
-            <p className='table-btn' onClick={() => setAddWeapon(true)}>Add Weapon</p>
+            <div className='weapon-controllers'>
+                <p className='table-btn' onClick={() => setSelectWeapon(true)}>Select Weapon</p>
+                <p className='table-btn' onClick={() => setAddWeapon(true)}>Create Weapon</p>
+            </div>
+            {/* Create Weapon */}
             <Modal
                 open={addWeapon}
                 onClose={handleClose}
@@ -235,6 +251,38 @@ function AddWeaponModal() {
                                     onChange={(e) => setDescription(e.target.value)}
                                 />
                                 <br/>
+                                <button className='modal-btn' type='submit'>Submit</button>
+                            </center>
+                        </form>
+                    </Box>
+                </div>
+            </Modal>
+
+            {/* Select Weapon */}
+            <Modal
+                open={selectWeapon}
+                onClose={handleClose}
+            >
+                <div>
+                    <Box sx={style}>
+                        <center>
+                            <h2>Select Weapon</h2>
+                        </center>
+                        <form className='select-weapon-container'>
+                            <center>
+                                <select 
+                                    className='modal-dropdown select-weapon-dropdown'
+                                    onChange={(e) => setSelectedWeapon(e.target.value)}
+                                    value={selectedWeapon}
+                                >
+                                    <option value={0} disabled>Weapons</option>
+                                    {equipmentReducer.map((weapon, i) => {
+                                        return (
+                                            <option key={i} value={weapon.index}>{weapon.name}</option>
+                                        );
+                                    })}
+                                </select>
+                                <br />
                                 <button className='modal-btn' type='submit'>Submit</button>
                             </center>
                         </form>
